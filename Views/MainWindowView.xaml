@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EMA"
         mc:Ignorable="d"
-        Title="MainWindowView"
+        x:Name="Page"
+        Title="Test :D"
         Height="450"
         Width="800"
         WindowStyle="None"
         WindowState="Maximized"
-        ResizeMode="NoResize"
+        ResizeMode="CanResizeWithGrip"
         AllowsTransparency="True">
 
     <Grid>
@@ -26,6 +27,7 @@
                    Grid.Row="0"
                    PreviewMouseLeftButtonDown="Rectangle_PreviewMouseLeftButtonDown">
         </Rectangle>
+        <TextBlock Style="{StaticResource HeaderTitle}"/>
         <Grid HorizontalAlignment="Right">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{Binding ElementName=RectHeader, 
@@ -36,43 +38,44 @@
                                                   Path=ActualHeight}" />
                 <ColumnDefinition Width="15" />
             </Grid.ColumnDefinitions>
-            <Button Background="Transparent"
-                    BorderBrush="Transparent"
+            <Button x:Name="btnClose"
+                Background="Transparent"
+                BorderBrush="Transparent"
                 Grid.Column="2" 
                 Width="30"
                 Grid.Row="0"
                 Height="30"
-                Margin="0,-3,0,0"
                 Cursor="Hand"
-                ClickMode="Press">
+                ClickMode="Press"
+                Click="btnClose_Click">
             <TextBlock Text="X"
-                       Margin="0,-7,0,0"
+                       Margin="0,-6,0,0"
                        Foreground="Gray"
-                       FontSize="28" />
+                       FontSize="26" />
             </Button>
-            <Button Grid.Column="1"
+            <Button x:Name="btnReduceOrMaximize"
+                    Grid.Column="1"
                     BorderBrush="Transparent"
-                    BorderThickness="2"
                     Width="30"
                     Grid.Row="0"
                     Height="30"
-                    Margin="0,-2,0,0"
                     Cursor="Hand"
                     Background="Transparent"
-                    ClickMode="Press">
+                    ClickMode="Press"
+                    Click="btnReduceOrMaximize_Click">
                 <Image Source="\Ressources\reduce.png"
                        Width="20"></Image>
             </Button>
-            <Button Grid.Column="0"
+            <Button x:Name="btnMinimize"
+                    Grid.Column="0"
                     BorderBrush="Transparent"
-                    BorderThickness="2"
                     Width="30"
                     Grid.Row="0"
                     Height="30"
-                    Margin="0,-3,0,0"
                     Cursor="Hand"
                     Background="Transparent"
-                    ClickMode="Press">
+                    ClickMode="Press"
+                    Click="btnMinimize_Click">
                 <TextBlock Text="-"
                            Margin="0,-23,0,0"
                            Foreground="Gray"

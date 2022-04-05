@@ -4,6 +4,22 @@
              xmlns:local="clr-namespace:EMA"
              StartupUri="Views\MainWindowView.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock"
+               x:Key="HeaderTitle">
+            <Setter Property="Text"
+                    Value="{Binding ElementName=Page, Path=Title}" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontFamily"
+                    Value="Arial Bold" />
+            <Setter Property="Margin"
+                    Value="0,1,0,0" />
+        </Style>
     </Application.Resources>
 </Application>
