@@ -9,6 +9,13 @@
 
   <ItemGroup>
     <None Remove="katzenbaby-quiz.jpg" />
+    <None Remove="Ressources\maximize.png" />
+    <None Remove="Ressources\reduce.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Ressources\maximize.png" />
+    <Resource Include="Ressources\reduce.png" />
   </ItemGroup>
 
   <ItemGroup>
