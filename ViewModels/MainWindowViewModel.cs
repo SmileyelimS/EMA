@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace EMA
 {
@@ -7,32 +9,30 @@ namespace EMA
     {
         public MainWindowViewModel()
         {
-            Age = 12;
         }
 
-        private string _name;
-
-        public string Name
+        private string _windowStateImage;
+        public string WindowStateImage
         {
-            get { return _name; }
-            set { OnPropertyChange(); _name = value; }
-        }
-
-        private int _age;
-
-        public int Age
-        {
-            get { return _age; }
+            get { return _windowStateImage; }
             set 
             { 
-                _age = value; 
+                _windowStateImage = value; 
                 OnPropertyChange();
             }
         }
 
-        public void SetAge(int age)
+        public void SetWindowStateImage(WindowState windowState)
         {
-            Age = age;
+            switch (windowState)
+            {
+                case WindowState.Normal:
+                    WindowStateImage = @"\Resources\maximize.png";
+                    break;
+                case WindowState.Maximized:
+                    WindowStateImage = @"\Resources\reduce.png";
+                    break;
+            }
         }
     }
 }

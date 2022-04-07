@@ -5,21 +5,47 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>iconFirmaPlatzhalter.ico</ApplicationIcon>
+    <PackageIcon>iconAppPlatzhalter128.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="katzenbaby-quiz.jpg" />
-    <None Remove="Ressources\maximize.png" />
-    <None Remove="Ressources\reduce.png" />
+    <None Remove="Resources\appName.png" />
+    <None Remove="Resources\backgroundStartScreen.png" />
+    <None Remove="Resources\iconFirmaPlatzhalter.png" />
+    <None Remove="Resources\maximize.png" />
+    <None Remove="Resources\reduce.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Ressources\maximize.png" />
-    <Resource Include="Ressources\reduce.png" />
+    <Content Include="iconFirmaPlatzhalter.ico" />
+    <Content Include="Resources\backgroundStartScreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <SplashScreen Include="Ressources\katzenbaby-quiz.jpg">
+    <None Include="..\..\Users\nsiebrands\Documents\Projekt Schule\iconAppPlatzhalter128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\appName.png" />
+    <Resource Include="Resources\iconFirmaPlatzhalter.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\maximize.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\reduce.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="Resources\katzenbabySplashscreen.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
   </ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace EMA
 {
@@ -8,13 +9,14 @@ namespace EMA
     /// </summary>
     public partial class MainWindowView : Window
     {
-        private MainWindowViewModel _viewModel;
+        private readonly MainWindowViewModel _viewModel;
         public MainWindowView()
         {
             InitializeComponent();
             
             _viewModel = new MainWindowViewModel();
             DataContext = _viewModel;
+            _viewModel.SetWindowStateImage(WindowState);
         }
 
         private void Rectangle_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -38,6 +40,7 @@ namespace EMA
                     WindowState = WindowState.Normal;
                     break;
             }
+            _viewModel.SetWindowStateImage(WindowState);
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)

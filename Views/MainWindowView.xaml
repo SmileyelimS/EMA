@@ -7,80 +7,122 @@
         mc:Ignorable="d"
         x:Name="Page"
         Title="Test :D"
-        Height="450"
-        Width="800"
-        WindowStyle="None"
-        WindowState="Maximized"
-        ResizeMode="CanResizeWithGrip"
-        AllowsTransparency="True">
+        Style="{StaticResource StandardWindow}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35" />
-            <RowDefinition />
+            <RowDefinition/>
         </Grid.RowDefinitions>
+        
+        <Image Grid.Row="1"
+               Source="\Resources\backgroundStartScreen.png"
+               Stretch="Fill"/>
+
         <Rectangle x:Name="RectHeader"
-                   Height="35"
-                   VerticalAlignment="Top"
-                   HorizontalAlignment="Stretch"
-                   Fill="Black"
-                   Grid.Row="0"
+                   Style="{StaticResource HeaderRectangle}"
                    PreviewMouseLeftButtonDown="Rectangle_PreviewMouseLeftButtonDown">
         </Rectangle>
         <TextBlock Style="{StaticResource HeaderTitle}"/>
+        
         <Grid HorizontalAlignment="Right">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding ElementName=RectHeader, 
-                                                  Path=ActualHeight}"/>
-                <ColumnDefinition Width="{Binding ElementName=RectHeader, 
-                                                  Path=ActualHeight}" />
-                <ColumnDefinition Width="{Binding ElementName=RectHeader, 
-                                                  Path=ActualHeight}" />
+                <ColumnDefinition Width="{Binding ElementName=RectHeader, Path=ActualHeight}"/>
+                <ColumnDefinition Width="{Binding ElementName=RectHeader, Path=ActualHeight}" />
+                <ColumnDefinition Width="{Binding ElementName=RectHeader, Path=ActualHeight}" />
                 <ColumnDefinition Width="15" />
             </Grid.ColumnDefinitions>
             <Button x:Name="btnClose"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                Grid.Column="2" 
-                Width="30"
-                Grid.Row="0"
-                Height="30"
-                Cursor="Hand"
-                ClickMode="Press"
-                Click="btnClose_Click">
-            <TextBlock Text="X"
-                       Margin="0,-6,0,0"
-                       Foreground="Gray"
-                       FontSize="26" />
+                    Style="{StaticResource HeaderButtons}"
+                    Grid.Column="2"
+                    Click="btnClose_Click">
+                <TextBlock Text="X"
+                           Margin="0,-5,0,0"
+                           Foreground="Gray"
+                           FontSize="26" />
             </Button>
             <Button x:Name="btnReduceOrMaximize"
-                    Grid.Column="1"
-                    BorderBrush="Transparent"
-                    Width="30"
-                    Grid.Row="0"
-                    Height="30"
-                    Cursor="Hand"
-                    Background="Transparent"
-                    ClickMode="Press"
-                    Click="btnReduceOrMaximize_Click">
-                <Image Source="\Ressources\reduce.png"
-                       Width="20"></Image>
+                Style="{StaticResource HeaderButtons}"
+                Grid.Column="1"
+                Click="btnReduceOrMaximize_Click">
+                <Image Source="{Binding WindowStateImage}"
+                    Width="20"
+                    Margin="0,2,0,0">
+                </Image>
             </Button>
             <Button x:Name="btnMinimize"
-                    Grid.Column="0"
-                    BorderBrush="Transparent"
-                    Width="30"
-                    Grid.Row="0"
-                    Height="30"
-                    Cursor="Hand"
-                    Background="Transparent"
-                    ClickMode="Press"
-                    Click="btnMinimize_Click">
+                Style="{StaticResource HeaderButtons}"
+                Grid.Column="0"
+                Click="btnMinimize_Click">
                 <TextBlock Text="-"
-                           Margin="0,-23,0,0"
-                           Foreground="Gray"
-                           FontSize="45" />
+                        Margin="0,-21,0,0"
+                        Foreground="Gray"
+                        FontSize="45" />
             </Button>
         </Grid>
+        
+        <Image Source="\Resources\iconFirmaPlatzhalter.png"
+               HorizontalAlignment="Left"
+               Margin="10,5,0,1" />
+        <Image Source="\Resources\appName.png"
+               HorizontalAlignment="Left"
+               Margin="50,6,0,1" />
+
+        <Viewbox Grid.Row="1">
+            <Grid Margin="200,0,0,0">
+                <Button Style="{StaticResource StartMenuButtons}"
+                        Height="100"
+                        Width="200"
+                        HorizontalAlignment="Right"
+                        Margin="0,20,40,0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius"
+                                    Value="10" />
+                        </Style>
+                    </Button.Resources>
+                    <TextBlock Text="Übersicht alte Bestellungen"
+                               TextAlignment="Center"
+                               FontFamily="Arial Bold"
+                               FontSize="25"
+                               TextWrapping="WrapWithOverflow" />
+                </Button>
+                <Button  Style="{StaticResource StartMenuButtons}"
+                         Height="100"
+                         Width="200"
+                         HorizontalAlignment="Right"
+                         Margin="0,20,280,0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius"
+                                    Value="10" />
+                        </Style>
+                    </Button.Resources>
+                    <TextBlock Text="Neue
+                               Bestellung"
+                               FontFamily="Arial Bold"
+                               FontSize="25"
+                               TextAlignment="Center"
+                               TextWrapping="WrapWithOverflow" />
+                </Button>
+                <Button Style="{StaticResource StartMenuButtons}"
+                        Height="25"
+                        Width="210"
+                        HorizontalAlignment="Right"
+                        Margin="0,250,155,50">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius"
+                                    Value="10" />
+                        </Style>
+                    </Button.Resources>
+                    <TextBlock Text="Nutzer - Informationen"
+                               FontFamily="Arial Bold"
+                               FontSize="16"
+                               TextAlignment="Center"
+                               TextWrapping="WrapWithOverflow" />
+                </Button>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>
