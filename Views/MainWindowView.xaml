@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:EMA"
         mc:Ignorable="d"
         x:Name="Page"
-        Title="Test :D"
         Style="{StaticResource StandardWindow}">
 
     <Grid>
@@ -15,9 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         
-        <Image Grid.Row="1"
-               Source="\Resources\backgroundStartScreen.png"
-               Stretch="Fill"/>
+        <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" />
 
         <Rectangle x:Name="RectHeader"
                    Style="{StaticResource HeaderRectangle}"
@@ -67,62 +64,5 @@
         <Image Source="\Resources\appName.png"
                HorizontalAlignment="Left"
                Margin="50,6,0,1" />
-
-        <Viewbox Grid.Row="1">
-            <Grid Margin="200,0,0,0">
-                <Button Style="{StaticResource StartMenuButtons}"
-                        Height="100"
-                        Width="200"
-                        HorizontalAlignment="Right"
-                        Margin="0,20,40,0">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius"
-                                    Value="10" />
-                        </Style>
-                    </Button.Resources>
-                    <TextBlock Text="Übersicht alte Bestellungen"
-                               TextAlignment="Center"
-                               FontFamily="Arial Bold"
-                               FontSize="25"
-                               TextWrapping="WrapWithOverflow" />
-                </Button>
-                <Button  Style="{StaticResource StartMenuButtons}"
-                         Height="100"
-                         Width="200"
-                         HorizontalAlignment="Right"
-                         Margin="0,20,280,0">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius"
-                                    Value="10" />
-                        </Style>
-                    </Button.Resources>
-                    <TextBlock Text="Neue
-                               Bestellung"
-                               FontFamily="Arial Bold"
-                               FontSize="25"
-                               TextAlignment="Center"
-                               TextWrapping="WrapWithOverflow" />
-                </Button>
-                <Button Style="{StaticResource StartMenuButtons}"
-                        Height="25"
-                        Width="210"
-                        HorizontalAlignment="Right"
-                        Margin="0,250,155,50">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius"
-                                    Value="10" />
-                        </Style>
-                    </Button.Resources>
-                    <TextBlock Text="Nutzer - Informationen"
-                               FontFamily="Arial Bold"
-                               FontSize="16"
-                               TextAlignment="Center"
-                               TextWrapping="WrapWithOverflow" />
-                </Button>
-            </Grid>
-        </Viewbox>
     </Grid>
 </Window>

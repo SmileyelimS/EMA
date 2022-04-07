@@ -41,6 +41,7 @@
     <Content Include="Resources\maximize.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
     <Resource Include="Resources\reduce.png" />
   </ItemGroup>
 

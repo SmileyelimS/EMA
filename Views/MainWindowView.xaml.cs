@@ -1,18 +1,21 @@
-﻿using System.Windows;
+﻿using EMA.Views;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace EMA
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindowView : Window
     {
+        private static Window mainWindow;
+
         private readonly MainWindowViewModel _viewModel;
         public MainWindowView()
         {
+            mainWindow = this;
+
             InitializeComponent();
+            Main.Content = new MainView();
             
             _viewModel = new MainWindowViewModel();
             DataContext = _viewModel;
@@ -46,6 +49,11 @@ namespace EMA
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        public static void SetTitle(string title)
+        {
+            mainWindow.Title = title;
         }
     }
 }

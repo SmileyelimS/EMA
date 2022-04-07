@@ -13,5 +13,6 @@ namespace EMA
     /// </summary>
     public partial class App : Application
     {
+       
     }
 }
