@@ -24,12 +24,12 @@ namespace EMA
             DragMove();
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        private void btnReduceOrMaximize_Click(object sender, RoutedEventArgs e)
+        private void BtnReduceOrMaximize_Click(object sender, RoutedEventArgs e)
         {
             switch(WindowState)
             {
@@ -43,7 +43,7 @@ namespace EMA
             _viewModel.SetWindowStateImage(WindowState);
         }
 
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }

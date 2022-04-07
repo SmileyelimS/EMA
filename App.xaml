@@ -8,7 +8,7 @@
         <Style TargetType="TextBlock" 
                x:Key="HeaderTitle">
             <Setter Property="Text" Value="{Binding ElementName=Page, Path=Title}" />
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="Gray" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="20" />

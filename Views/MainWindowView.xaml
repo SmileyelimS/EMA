@@ -35,7 +35,7 @@
             <Button x:Name="btnClose"
                     Style="{StaticResource HeaderButtons}"
                     Grid.Column="2"
-                    Click="btnClose_Click">
+                    Click="BtnClose_Click">
                 <TextBlock Text="X"
                            Margin="0,-5,0,0"
                            Foreground="Gray"
@@ -44,7 +44,7 @@
             <Button x:Name="btnReduceOrMaximize"
                 Style="{StaticResource HeaderButtons}"
                 Grid.Column="1"
-                Click="btnReduceOrMaximize_Click">
+                Click="BtnReduceOrMaximize_Click">
                 <Image Source="{Binding WindowStateImage}"
                     Width="20"
                     Margin="0,2,0,0">
@@ -53,7 +53,7 @@
             <Button x:Name="btnMinimize"
                 Style="{StaticResource HeaderButtons}"
                 Grid.Column="0"
-                Click="btnMinimize_Click">
+                Click="BtnMinimize_Click">
                 <TextBlock Text="-"
                         Margin="0,-21,0,0"
                         Foreground="Gray"
