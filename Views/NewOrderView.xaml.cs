@@ -1,4 +1,5 @@
 ﻿using EMA.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace EMA.Views
@@ -13,6 +14,11 @@ namespace EMA.Views
             _viewModel = new NewOrderViewModel();
             DataContext = _viewModel;
             MainWindowView.SetTitle("Neue Bestellung erfassen");
+        }
+
+        private void GoBackToStartPageButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainView());
         }
     }
 }

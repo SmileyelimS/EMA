@@ -6,63 +6,64 @@
         xmlns:local="clr-namespace:EMA"
         mc:Ignorable="d"
         x:Name="Page"
-        Style="{StaticResource StandardWindow}">
+        Style="{StaticResource StandardWindow}"
+        ResizeMode="NoResize">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35" />
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        
-        <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" />
-
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="1"
+                   x:Name="Main"
+                   NavigationUIVisibility="Hidden" />
         <Rectangle x:Name="RectHeader"
-                   Style="{StaticResource HeaderRectangle}"
-                   PreviewMouseLeftButtonDown="Rectangle_PreviewMouseLeftButtonDown">
-        </Rectangle>
-        <TextBlock Style="{StaticResource HeaderTitle}"/>
-        
-        <Grid HorizontalAlignment="Right">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding ElementName=RectHeader, Path=ActualHeight}"/>
-                <ColumnDefinition Width="{Binding ElementName=RectHeader, Path=ActualHeight}" />
-                <ColumnDefinition Width="{Binding ElementName=RectHeader, Path=ActualHeight}" />
-                <ColumnDefinition Width="15" />
-            </Grid.ColumnDefinitions>
-            <Button x:Name="btnClose"
-                    Style="{StaticResource HeaderButtons}"
-                    Grid.Column="2"
-                    Click="BtnClose_Click">
-                <TextBlock Text="X"
-                           Margin="0,-5,0,0"
-                           Foreground="Gray"
-                           FontSize="26" />
-            </Button>
-            <Button x:Name="btnReduceOrMaximize"
-                Style="{StaticResource HeaderButtons}"
-                Grid.Column="1"
-                Click="BtnReduceOrMaximize_Click">
-                <Image Source="{Binding WindowStateImage}"
-                    Width="20"
-                    Margin="0,2,0,0">
-                </Image>
-            </Button>
-            <Button x:Name="btnMinimize"
-                Style="{StaticResource HeaderButtons}"
-                Grid.Column="0"
-                Click="BtnMinimize_Click">
-                <TextBlock Text="-"
-                        Margin="0,-21,0,0"
-                        Foreground="Gray"
-                        FontSize="45" />
-            </Button>
+                       Style="{StaticResource HeaderRectangle}"
+                       PreviewMouseLeftButtonDown="Rectangle_PreviewMouseLeftButtonDown">
+            </Rectangle>
+            <TextBlock Style="{StaticResource HeaderTitle}" />
+
+            <Grid HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding ElementName=RectHeader, Path=ActualHeight}" />
+                    <ColumnDefinition Width="{Binding ElementName=RectHeader, Path=ActualHeight}" />
+                    <ColumnDefinition Width="{Binding ElementName=RectHeader, Path=ActualHeight}" />
+                    <ColumnDefinition Width="15" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnClose"
+                        Style="{StaticResource HeaderButtons}"
+                        Grid.Column="2"
+                        Click="BtnClose_Click">
+                    <TextBlock Text="X"
+                               Margin="0,-5,0,0"
+                               Foreground="Gray"
+                               FontSize="26" />
+                </Button>
+                <Button x:Name="btnReduceOrMaximize"
+                        Style="{StaticResource HeaderButtons}"
+                        Grid.Column="1"
+                        Click="BtnReduceOrMaximize_Click">
+                    <Image Source="{Binding WindowStateImage}"
+                           Width="20"
+                           Margin="0,2,0,0">
+                    </Image>
+                </Button>
+                <Button x:Name="btnMinimize"
+                        Style="{StaticResource HeaderButtons}"
+                        Grid.Column="0"
+                        Click="BtnMinimize_Click">
+                    <TextBlock Text="-"
+                               Margin="0,-21,0,0"
+                               Foreground="Gray"
+                               FontSize="45" />
+                </Button>
+            </Grid>
+
+            <Image Source="\Resources\iconFirmaPlatzhalter.png"
+                   HorizontalAlignment="Left"
+                   Margin="10,5,0,1" />
+            <Image Source="\Resources\appName.png"
+                   HorizontalAlignment="Left"
+                   Margin="50,6,0,1" />
         </Grid>
-        
-        <Image Source="\Resources\iconFirmaPlatzhalter.png"
-               HorizontalAlignment="Left"
-               Margin="10,5,0,1" />
-        <Image Source="\Resources\appName.png"
-               HorizontalAlignment="Left"
-               Margin="50,6,0,1" />
-    </Grid>
 </Window>

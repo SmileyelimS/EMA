@@ -14,16 +14,19 @@ namespace EMA.Views
 
             _viewModel = new MainViewModel();
             DataContext = _viewModel;
+            MainWindowView.SetTitle("");
         }
 
         private void GoToNewOrderButton(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new NewOrderView());
         }
+
         private void GoToOldOrdersOverviewButton(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new OldOrdersOverviewView());
         }
+
         private void GoToUserInformationsButton(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new UserInformationsView()
