@@ -17,11 +17,18 @@ namespace EMA.Models
         public int SelledAmount { get; set; }
         public string SelledUnit { get; set; }
         public int PriceSelledUnitEUR { get; set; }
-        public string CompanyName { get; set; }
+        public Dealer Dealer{ get; set; }
         public int DealerItemNumber { get; set; }
         public string Availability { get; set; }
         public string DeliveryTime { get; set; }
 
         public string PicturePath => $@"C:\Users\nsiebrands\Documents\Projekt Schule\Bilder\Datenbank bsp\{Picture}";
+        public string PackageVolume => $"{VolumePack}" + " " + $"{VolumeUnitPack}";
+        public string SelledAmountString => $"{SelledAmount}" + " " + $"{SelledUnit}";
+        public string ArticleNumber => $"Art.Nr.:" + " " + $"{DealerItemNumber}";
+        public string CompanyName => $"{Dealer.CompanyName}";
+
+        public double Price => PriceSelledUnitEUR / 100d;
+        public string PriceText => $"{Price.ToString("0.00")}" + " " + $"€";
     }
 }

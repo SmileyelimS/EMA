@@ -20,5 +20,10 @@ namespace EMA.Views
         {
             NavigationService.Navigate(new MainView());
         }
+
+        private void AddToCart(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

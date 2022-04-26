@@ -24,62 +24,11 @@ namespace EMA.ViewModels
 
         private void InitDemoItems()
         {
+            var dealer = new Dealer();
+            dealer.CompanyName = "Schwarzkopf";
             Items = new List<Items>();
-            Items.Add(new Items
-            {
-                ItemID = 1,
-                Picture = "Haarfarbe.png",
-                Name = "Schwarzkopf Brilliance 890",
-                Description = "Haarfarbe Schwarz",
-                VolumePack = 100,
-                VolumeUnitPack = "ml",
-                SelledAmount = 10,
-                SelledUnit = "Stk",
-                //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                PriceSelledUnitEUR = 4999,
-                //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                CompanyName = "Schwarzkopf",
-                DealerItemNumber = 12077448,
-                Availability = "Auf Lager",
-                DeliveryTime = "1-2  Werktage"
-            });
-            Items.Add(new Items
-            {
-                ItemID = 2,
-                Picture = "Shampoo.png",
-                Name = "Schwarzkopf Shampoo Repair&Care",
-                Description = "Pflegeshampoo für trockenes und geschädigtes Haar",
-                VolumePack = 500,
-                VolumeUnitPack = "ml",
-                SelledAmount = 10,
-                SelledUnit = "Stk",
-                //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                PriceSelledUnitEUR = 5999,
-                //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                //Dann CompanyName + "Art.Nr.:" + DealerItemNumber
-                CompanyName = "Schwarzkopf",
-                DealerItemNumber = 12077666,
-                Availability = "Auf Lager",
-                DeliveryTime = "1-2  Werktage"
-            });
-            Items.Add(new Items
-            {
-                ItemID = 3,
-                Picture = "Spülung.png",
-                Name = "Schwarzkopf Schauma Frucht&Vitamin Spülung",
-                Description = "Pflegespülung für normales Haar",
-                VolumePack = 400,
-                VolumeUnitPack = "ml",
-                SelledAmount = 10,
-                SelledUnit = "Stk",
-                //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                PriceSelledUnitEUR = 5599,
-                //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                CompanyName = "Schwarzkopf",
-                DealerItemNumber = 12077556,
-                Availability = "Auf Lager",
-                DeliveryTime = "2-3  Werktage"
-            });
+
+            for (int i = 0; i < 8; i++)
             {
                 Items.Add(new Items
                 {
@@ -91,10 +40,9 @@ namespace EMA.ViewModels
                     VolumeUnitPack = "ml",
                     SelledAmount = 10,
                     SelledUnit = "Stk",
-                    //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
                     PriceSelledUnitEUR = 4999,
+                    Dealer = dealer,
                     //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                    CompanyName = "Schwarzkopf",
                     DealerItemNumber = 12077448,
                     Availability = "Auf Lager",
                     DeliveryTime = "1-2  Werktage"
@@ -109,11 +57,9 @@ namespace EMA.ViewModels
                     VolumeUnitPack = "ml",
                     SelledAmount = 10,
                     SelledUnit = "Stk",
-                    //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
+                    Dealer = dealer,
                     PriceSelledUnitEUR = 5999,
                     //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                    //Dann CompanyName + "Art.Nr.:" + DealerItemNumber
-                    CompanyName = "Schwarzkopf",
                     DealerItemNumber = 12077666,
                     Availability = "Auf Lager",
                     DeliveryTime = "1-2  Werktage"
@@ -128,274 +74,13 @@ namespace EMA.ViewModels
                     VolumeUnitPack = "ml",
                     SelledAmount = 10,
                     SelledUnit = "Stk",
-                    //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
                     PriceSelledUnitEUR = 5599,
                     //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                    CompanyName = "Schwarzkopf",
+                    Dealer = dealer,
                     DealerItemNumber = 12077556,
                     Availability = "Auf Lager",
                     DeliveryTime = "2-3  Werktage"
                 });
-                Items.Add(new Items
-                {
-                    ItemID = 3,
-                    Picture = "Spülung.png",
-                    Name = "Schwarzkopf Schauma Frucht&Vitamin Spülung",
-                    Description = "Pflegespülung für normales Haar",
-                    VolumePack = 400,
-                    VolumeUnitPack = "ml",
-                    SelledAmount = 10,
-                    SelledUnit = "Stk",
-                    //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                    PriceSelledUnitEUR = 5599,
-                    //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                    CompanyName = "Schwarzkopf",
-                    DealerItemNumber = 12077556,
-                    Availability = "Auf Lager",
-                    DeliveryTime = "2-3  Werktage"
-                });
-                Items.Add(new Items
-                     {
-                         ItemID = 1,
-                         Picture = "Haarfarbe.png",
-                         Name = "Schwarzkopf Brilliance 890",
-                         Description = "Haarfarbe Schwarz",
-                         VolumePack = 100,
-                         VolumeUnitPack = "ml",
-                         SelledAmount = 10,
-                         SelledUnit = "Stk",
-                         //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                         PriceSelledUnitEUR = 4999,
-                         //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                         CompanyName = "Schwarzkopf",
-                         DealerItemNumber = 12077448,
-                         Availability = "Auf Lager",
-                         DeliveryTime = "1-2  Werktage"
-                     });
-                Items.Add(new Items
-                {
-                    ItemID = 2,
-                    Picture = "Shampoo.png",
-                    Name = "Schwarzkopf Shampoo Repair&Care",
-                    Description = "Pflegeshampoo für trockenes und geschädigtes Haar",
-                    VolumePack = 500,
-                    VolumeUnitPack = "ml",
-                    SelledAmount = 10,
-                    SelledUnit = "Stk",
-                    //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                    PriceSelledUnitEUR = 5999,
-                    //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                    //Dann CompanyName + "Art.Nr.:" + DealerItemNumber
-                    CompanyName = "Schwarzkopf",
-                    DealerItemNumber = 12077666,
-                    Availability = "Auf Lager",
-                    DeliveryTime = "1-2  Werktage"
-                });
-                Items.Add(new Items
-                {
-                    ItemID = 3,
-                    Picture = "Spülung.png",
-                    Name = "Schwarzkopf Schauma Frucht&Vitamin Spülung",
-                    Description = "Pflegespülung für normales Haar",
-                    VolumePack = 400,
-                    VolumeUnitPack = "ml",
-                    SelledAmount = 10,
-                    SelledUnit = "Stk",
-                    //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                    PriceSelledUnitEUR = 5599,
-                    //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                    CompanyName = "Schwarzkopf",
-                    DealerItemNumber = 12077556,
-                    Availability = "Auf Lager",
-                    DeliveryTime = "2-3  Werktage"
-                });
-                {
-                    Items.Add(new Items
-                    {
-                        ItemID = 1,
-                        Picture = "Haarfarbe.png",
-                        Name = "Schwarzkopf Brilliance 890",
-                        Description = "Haarfarbe Schwarz",
-                        VolumePack = 100,
-                        VolumeUnitPack = "ml",
-                        SelledAmount = 10,
-                        SelledUnit = "Stk",
-                        //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                        PriceSelledUnitEUR = 4999,
-                        //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                        CompanyName = "Schwarzkopf",
-                        DealerItemNumber = 12077448,
-                        Availability = "Auf Lager",
-                        DeliveryTime = "1-2  Werktage"
-                    });
-                    Items.Add(new Items
-                    {
-                        ItemID = 2,
-                        Picture = "Shampoo.png",
-                        Name = "Schwarzkopf Shampoo Repair&Care",
-                        Description = "Pflegeshampoo für trockenes und geschädigtes Haar",
-                        VolumePack = 500,
-                        VolumeUnitPack = "ml",
-                        SelledAmount = 10,
-                        SelledUnit = "Stk",
-                        //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                        PriceSelledUnitEUR = 5999,
-                        //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                        //Dann CompanyName + "Art.Nr.:" + DealerItemNumber
-                        CompanyName = "Schwarzkopf",
-                        DealerItemNumber = 12077666,
-                        Availability = "Auf Lager",
-                        DeliveryTime = "1-2  Werktage"
-                    });
-                    Items.Add(new Items
-                    {
-                        ItemID = 3,
-                        Picture = "Spülung.png",
-                        Name = "Schwarzkopf Schauma Frucht&Vitamin Spülung",
-                        Description = "Pflegespülung für normales Haar",
-                        VolumePack = 400,
-                        VolumeUnitPack = "ml",
-                        SelledAmount = 10,
-                        SelledUnit = "Stk",
-                        //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                        PriceSelledUnitEUR = 5599,
-                        //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                        CompanyName = "Schwarzkopf",
-                        DealerItemNumber = 12077556,
-                        Availability = "Auf Lager",
-                        DeliveryTime = "2-3  Werktage"
-                    });
-                    Items.Add(new Items
-                    {
-                        ItemID = 3,
-                        Picture = "Spülung.png",
-                        Name = "Schwarzkopf Schauma Frucht&Vitamin Spülung",
-                        Description = "Pflegespülung für normales Haar",
-                        VolumePack = 400,
-                        VolumeUnitPack = "ml",
-                        SelledAmount = 10,
-                        SelledUnit = "Stk",
-                        //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                        PriceSelledUnitEUR = 5599,
-                        //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                        CompanyName = "Schwarzkopf",
-                        DealerItemNumber = 12077556,
-                        Availability = "Auf Lager",
-                        DeliveryTime = "2-3  Werktage"
-                    });
-                    Items.Add(new Items
-                    {
-                        ItemID = 2,
-                        Picture = "Shampoo.png",
-                        Name = "Schwarzkopf Shampoo Repair&Care",
-                        Description = "Pflegeshampoo für trockenes und geschädigtes Haar",
-                        VolumePack = 500,
-                        VolumeUnitPack = "ml",
-                        SelledAmount = 10,
-                        SelledUnit = "Stk",
-                        //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                        PriceSelledUnitEUR = 5999,
-                        //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                        //Dann CompanyName + "Art.Nr.:" + DealerItemNumber
-                        CompanyName = "Schwarzkopf",
-                        DealerItemNumber = 12077666,
-                        Availability = "Auf Lager",
-                        DeliveryTime = "1-2  Werktage"
-                    });
-                    Items.Add(new Items
-                    {
-                        ItemID = 3,
-                        Picture = "Spülung.png",
-                        Name = "Schwarzkopf Schauma Frucht&Vitamin Spülung",
-                        Description = "Pflegespülung für normales Haar",
-                        VolumePack = 400,
-                        VolumeUnitPack = "ml",
-                        SelledAmount = 10,
-                        SelledUnit = "Stk",
-                        //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                        PriceSelledUnitEUR = 5599,
-                        //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                        CompanyName = "Schwarzkopf",
-                        DealerItemNumber = 12077556,
-                        Availability = "Auf Lager",
-                        DeliveryTime = "2-3  Werktage"
-                    });
-                    {
-                        Items.Add(new Items
-                        {
-                            ItemID = 1,
-                            Picture = "Haarfarbe.png",
-                            Name = "Schwarzkopf Brilliance 890",
-                            Description = "Haarfarbe Schwarz",
-                            VolumePack = 100,
-                            VolumeUnitPack = "ml",
-                            SelledAmount = 10,
-                            SelledUnit = "Stk",
-                            //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                            PriceSelledUnitEUR = 4999,
-                            //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                            CompanyName = "Schwarzkopf",
-                            DealerItemNumber = 12077448,
-                            Availability = "Auf Lager",
-                            DeliveryTime = "1-2  Werktage"
-                        });
-                        Items.Add(new Items
-                        {
-                            ItemID = 2,
-                            Picture = "Shampoo.png",
-                            Name = "Schwarzkopf Shampoo Repair&Care",
-                            Description = "Pflegeshampoo für trockenes und geschädigtes Haar",
-                            VolumePack = 500,
-                            VolumeUnitPack = "ml",
-                            SelledAmount = 10,
-                            SelledUnit = "Stk",
-                            //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                            PriceSelledUnitEUR = 5999,
-                            //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                            //Dann CompanyName + "Art.Nr.:" + DealerItemNumber
-                            CompanyName = "Schwarzkopf",
-                            DealerItemNumber = 12077666,
-                            Availability = "Auf Lager",
-                            DeliveryTime = "1-2  Werktage"
-                        });
-                        Items.Add(new Items
-                        {
-                            ItemID = 3,
-                            Picture = "Spülung.png",
-                            Name = "Schwarzkopf Schauma Frucht&Vitamin Spülung",
-                            Description = "Pflegespülung für normales Haar",
-                            VolumePack = 400,
-                            VolumeUnitPack = "ml",
-                            SelledAmount = 10,
-                            SelledUnit = "Stk",
-                            //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                            PriceSelledUnitEUR = 5599,
-                            //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                            CompanyName = "Schwarzkopf",
-                            DealerItemNumber = 12077556,
-                            Availability = "Auf Lager",
-                            DeliveryTime = "2-3  Werktage"
-                        });
-                        Items.Add(new Items
-                        {
-                            ItemID = 3,
-                            Picture = "Spülung.png",
-                            Name = "Schwarzkopf Schauma Frucht&Vitamin Spülung",
-                            Description = "Pflegespülung für normales Haar",
-                            VolumePack = 400,
-                            VolumeUnitPack = "ml",
-                            SelledAmount = 10,
-                            SelledUnit = "Stk",
-                            //Der Preis muss durch hundert geteilt und ein "€" angehängt werden
-                            PriceSelledUnitEUR = 5599,
-                            //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
-                            CompanyName = "Schwarzkopf",
-                            DealerItemNumber = 12077556,
-                            Availability = "Auf Lager",
-                            DeliveryTime = "2-3  Werktage"
-                        });
-                    }
-                }
             }
         }
     }
