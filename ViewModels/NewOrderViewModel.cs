@@ -15,7 +15,6 @@ namespace EMA.ViewModels
         }
 
         private List<Items> _items;
-
         public List<Items> Items
         {
             get { return _items; }
@@ -24,8 +23,10 @@ namespace EMA.ViewModels
 
         private void InitDemoItems()
         {
-            var dealer = new Dealer();
-            dealer.CompanyName = "Schwarzkopf";
+            var dealer = new Dealer
+            {
+                CompanyName = "Schwarzkopf"
+            };
             Items = new List<Items>();
 
             for (int i = 0; i < 8; i++)
@@ -42,7 +43,6 @@ namespace EMA.ViewModels
                     SelledUnit = "Stk",
                     PriceSelledUnitEUR = 4999,
                     Dealer = dealer,
-                    //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
                     DealerItemNumber = 12077448,
                     Availability = "Auf Lager",
                     DeliveryTime = "1-2  Werktage"
@@ -59,7 +59,6 @@ namespace EMA.ViewModels
                     SelledUnit = "Stk",
                     Dealer = dealer,
                     PriceSelledUnitEUR = 5999,
-                    //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
                     DealerItemNumber = 12077666,
                     Availability = "Auf Lager",
                     DeliveryTime = "1-2  Werktage"
@@ -75,7 +74,6 @@ namespace EMA.ViewModels
                     SelledAmount = 10,
                     SelledUnit = "Stk",
                     PriceSelledUnitEUR = 5599,
-                    //CompanyName soll via DealerID aus Tabelle Dealer ermittelt werden
                     Dealer = dealer,
                     DealerItemNumber = 12077556,
                     Availability = "Auf Lager",
