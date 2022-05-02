@@ -21,9 +21,33 @@ namespace EMA.Views
             NavigationService.Navigate(new MainView());
         }
 
-        private void AddToCart(object sender, RoutedEventArgs e)
+        private void GoToOverviewButton(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new NewOrderOverviewView());
+        }
 
+        private void GoToCartButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CartView());
+        }
+
+        private void AddToCartButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainView());
+        }
+
+        private void PlaceholderSearchbar_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PlaceholderSearchbar.Visibility = Visibility.Collapsed;
+            Searchbar.Focus();
+        }
+
+        private void Searchbar_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(Searchbar.Text))
+            {
+                PlaceholderSearchbar.Visibility = Visibility.Visible;
+            }
         }
     }
 }

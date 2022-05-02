@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:EMA.Views"
+      xmlns:dgx="urn:tom-englert.de/DataGridExtensions"
       mc:Ignorable="d"
       d:DesignHeight="640" d:DesignWidth="1120"
       Title="NewOrderView">
@@ -19,11 +20,19 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <TextBox x:Name="Searchbar"
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource TextBoxSearchBar}"
+                     LostFocus="Searchbar_LostFocus" />
+            <TextBox x:Name="PlaceholderSearchbar"
+                     Text="Suche..."
+                     Style="{StaticResource TextBoxSearchBar}"
+                     GotFocus="PlaceholderSearchbar_GotFocus" />
             <ScrollViewer VerticalScrollBarVisibility="Auto" />
-            <DataGrid Grid.Row="1"
+            <DataGrid Grid.Row="2"
                       x:Name="Items"
-                      ItemsSource="{Binding Items}"
-                      Style="{StaticResource DefaultDataGrid}">
+                      ItemsSource="{Binding MyFilteredItems}"
+                      Style="{StaticResource DefaultDataGrid}" >
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Bild"
                                             HeaderStyle="{StaticResource OrderTableHeader}">
@@ -53,9 +62,9 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Path=Name}"
+                                    <TextBlock Text="{Binding Path=Name, Mode=OneWay}"
                                                Style="{StaticResource DataGridTextNormal}" />
-                                    <TextBlock Text="{Binding Path=Description}"
+                                    <TextBlock Text="{Binding Path=Description, Mode=OneWay}"
                                                Style="{StaticResource DataGridTextSubtitle}" />
                                 </StackPanel>
                             </DataTemplate>
@@ -64,24 +73,24 @@
                     <DataGridTextColumn Header="Packungsgröße"
                                         HeaderStyle="{StaticResource OrderTableHeader}"
                                         CellStyle="{StaticResource DataGridTextCenter}"
-                                        Binding="{Binding Path=PackageVolume}" />
+                                        Binding="{Binding Path=PackageVolume, Mode=OneWay}" />
                     <DataGridTextColumn Header="Verkaufte Menge"
                                         HeaderStyle="{StaticResource OrderTableHeader}"
                                         CellStyle="{StaticResource DataGridTextCenter}"
-                                        Binding="{Binding Path=SelledAmountString}" />
+                                        Binding="{Binding Path=SelledAmountString, Mode=OneWay}" />
                     <DataGridTextColumn Header="Preis"
                                         MinWidth="100"
                                         HeaderStyle="{StaticResource OrderTableHeader}"
                                         CellStyle="{StaticResource DataGridTextCenter}"
-                                        Binding="{Binding Path=PriceText}" />
+                                        Binding="{Binding Path=PriceText, Mode=OneWay}" />
                     <DataGridTemplateColumn Header="Händlerinformation"
                                             HeaderStyle="{StaticResource OrderTableHeader}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Path=CompanyName}"
-                                               Style="{StaticResource DataGridTextNormal}"/>
-                                    <TextBlock Text="{Binding Path=ArticleNumber}"
+                                    <TextBlock Text="{Binding Path=CompanyName, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextNormal}" />
+                                    <TextBlock Text="{Binding Path=ArticleNumber, Mode=OneWay}"
                                                Style="{StaticResource DataGridTextSubtitle}" />
                                 </StackPanel>
                             </DataTemplate>
@@ -90,38 +99,70 @@
                     <DataGridTextColumn Header="Verfügbarkeit"
                                         HeaderStyle="{StaticResource OrderTableHeader}"
                                         CellStyle="{StaticResource DataGridTextCenter}"
-                                        Binding="{Binding Path=Availability}" />
+                                        Binding="{Binding Path=Availability, Mode=OneWay}" />
                     <DataGridTextColumn Header="Lieferzeit"
                                         MinWidth="120"
                                         HeaderStyle="{StaticResource OrderTableHeader}"
                                         CellStyle="{StaticResource DataGridTextCenter}"
-                                        Binding="{Binding Path=DeliveryTime}" />
+                                        Binding="{Binding Path=DeliveryTime, Mode=OneWay}" />
                     <DataGridTemplateColumn Width="*"
-                                            MinWidth="50">
+                                            MinWidth="50" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                    <Button Background="Transparent"
-                                            Click="AddToCart">
+                                <Button Background="Transparent"
+                                        Click="AddToCartButton" 
+                                        ClickMode="Press"
+                                        Cursor="Hand" >
                                     <Image  Source="\Resources\inWarenkorbLegen100.png"
-                                            Height="50"/>
-                                    </Button>
+                                            Height="50" 
+                                            Cursor="Hand"/>
+                                </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Grid.Row="1"
-                    Style="{StaticResource NewOrderButtons}"
+            <Button Style="{StaticResource NewOrderButtons}"
+                    VerticalAlignment="Top"
+                    Click="GoToCartButton">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Warenkorb"
+                           Style="{StaticResource NewOrderButtonsText}" />
+            </Button>
+            <Button Style="{StaticResource NewOrderButtons}"
+                    VerticalAlignment="Center"
+                    Click="GoToOverviewButton"
+                    Margin="20,100">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Bestellung abschließen"
+                           Style="{StaticResource NewOrderButtonsText}" />
+            </Button>
+            <Button Style="{StaticResource NewOrderButtons}"
                     VerticalAlignment="Bottom"
-                    Click="GoBackToStartPageButton">
+                    Click="GoBackToStartPageButton"
+                    Margin="20,120">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10" />
                     </Style>
                 </Button.Resources>
                 <TextBlock Text="Bestellung abbrechen"
-                           Style="{StaticResource NewOrderButtonsText}" />
+                           Style="{StaticResource NewOrderButtonsText}"/>
             </Button>
+            <TextBlock Style="{StaticResource TextSumNewOrder}"
+                       Text="Summe:"
+                       Margin="0,0,0,35" />
+            <TextBlock Style="{StaticResource TextSumNewOrder}"
+                       Text="1593,11 €"
+                       FontFamily="Arial Bold"/>
         </Grid>
     </ScrollViewer>
 </Page>

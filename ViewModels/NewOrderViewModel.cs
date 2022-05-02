@@ -1,9 +1,6 @@
 ﻿using EMA.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EMA.ViewModels
 {
@@ -81,5 +78,39 @@ namespace EMA.ViewModels
                 });
             }
         }
+
+        private string _searchText;
+        public string SearchText
+        {
+            get { return _searchText; }
+            set
+            {
+                _searchText = value;
+
+                OnPropertyChange();
+                OnPropertyChange("MyFilteredItems");
+            }
+        }
+
+        public List<Items> MyFilteredItems
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(SearchText)) return Items;
+
+                return Items.Where(x => x.Name.Contains(SearchText, System.StringComparison.OrdinalIgnoreCase) ||
+                                   x.Description.Contains(SearchText, System.StringComparison.OrdinalIgnoreCase) ||
+                                   x.VolumePack.ToString().Contains(SearchText, System.StringComparison.OrdinalIgnoreCase) ||
+                                   x.Price.ToString().Contains(SearchText, System.StringComparison.OrdinalIgnoreCase) ||
+                                   x.CompanyName.Contains(SearchText, System.StringComparison.OrdinalIgnoreCase) ||
+                                   x.DealerItemNumber.ToString().Contains(SearchText, System.StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+        }
+        
+        //public void AddToCart()
+        //{
+        //    MyFilteredItems.
+        //    List<KeyValuePair<Items.ItemsID>>
+        //}
     }
 }

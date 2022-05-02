@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Views\NewOrderOverview.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="iconFirmaPlatzhalter.ico" />
     <Content Include="Resources\backgroundStartScreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

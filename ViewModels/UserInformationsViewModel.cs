@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EMA.ViewModels
 {
-    public class UserInformationsViewModel
+    public class UserInformationsViewModel : ViewModelBase
     {
         public UserInformationsViewModel()
         {
