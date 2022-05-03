@@ -18,6 +18,15 @@ namespace EMA.ViewModels
             set { _items = value; }
         }
 
+        private Dictionary<Items, int> _itemsInCart = new Dictionary<Items, int>();
+
+        public Dictionary<Items, int> ItemsInCart
+        {
+            get { return _itemsInCart; }
+            set { _itemsInCart = value; }
+        }
+
+
         private void InitDemoItems()
         {
             var dealer = new Dealer
@@ -92,6 +101,17 @@ namespace EMA.ViewModels
             }
         }
 
+        private string _sumCart = "0 €";
+        public string SumCart
+        {
+            get { return _sumCart; }
+            set
+            {
+                _sumCart = value;
+                OnPropertyChange();
+            }
+        }
+
         public List<Items> MyFilteredItems
         {
             get
@@ -106,11 +126,35 @@ namespace EMA.ViewModels
                                    x.DealerItemNumber.ToString().Contains(SearchText, System.StringComparison.OrdinalIgnoreCase)).ToList();
             }
         }
-        
-        //public void AddToCart()
-        //{
-        //    MyFilteredItems.
-        //    List<KeyValuePair<Items.ItemsID>>
-        //}
+
+        public void AddToCart(Items item)
+        {
+            if (ItemsInCart.ContainsKey(item))
+            {
+                var value = ItemsInCart.GetValueOrDefault(item);
+                value++;
+                ItemsInCart.Remove(item);
+                ItemsInCart.Add(item, value);
+            }
+            else
+            {
+                ItemsInCart.Add(item, 1);
+            }
+
+            CalculateSumCart();
+
+            OnPropertyChange(nameof(ItemsInCart));
+        }
+
+        public void CalculateSumCart()
+        {
+            var calculatedSum = 0d;
+            foreach (var keyValuePair in ItemsInCart)
+            {
+                calculatedSum += keyValuePair.Key.Price * keyValuePair.Value;
+            }
+
+            SumCart = calculatedSum.ToString("0.00 €");
+        }
     }
 }

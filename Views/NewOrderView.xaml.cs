@@ -1,4 +1,6 @@
-﻿using EMA.ViewModels;
+﻿using EMA.Models;
+using EMA.ViewModels;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -33,7 +35,8 @@ namespace EMA.Views
 
         private void AddToCartButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MainView());
+            Items clickedItem = (Items)((Button)e.Source).DataContext;
+            _viewModel.AddToCart(clickedItem);
         }
 
         private void PlaceholderSearchbar_GotFocus(object sender, RoutedEventArgs e)

@@ -162,7 +162,7 @@
                        Text="Summe:"
                        Margin="0,0,0,35" />
             <TextBlock Style="{StaticResource TextSumNewOrder}"
-                       Text="1593,11 €"
+                       Text="{Binding SumCart}"
                        FontFamily="Arial Bold"/>
         </Grid>
     </ScrollViewer>
