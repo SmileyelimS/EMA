@@ -47,7 +47,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
-    <PackageReference Include="DataGridExtensions" Version="2.5.13" />
     <Resource Include="Resources\inWarenkorbLegen100.png" />
     <Resource Include="Resources\reduce.png" />
   </ItemGroup>

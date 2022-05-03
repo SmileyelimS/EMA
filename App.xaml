@@ -132,7 +132,8 @@
             <Setter Property="FontFamily" Value="Arial Bold" />
             <Setter Property="FontSize" Value="20" />
         </Style>
-        <Style TargetType="{x:Type DataGridCell}">
+        <Style TargetType="DataGridCell"
+               x:Key="DataGridTemplateDesign">
             <Setter Property="IsHitTestVisible" Value="False" />
             <Setter Property="Template">
                 <Setter.Value>

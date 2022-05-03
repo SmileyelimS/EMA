@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         x:Name="Page"
         Style="{StaticResource StandardWindow}"
-        ResizeMode="NoResize">
+        ResizeMode="CanResizeWithGrip">
 
         <Grid>
             <Grid.RowDefinitions>
