@@ -114,9 +114,8 @@
                                         Click="AddToCartButton" 
                                         ClickMode="Press"
                                         Cursor="Hand" >
-                                    <Image  Source="\Resources\inWarenkorbLegen100.png"
-                                            Height="50" 
-                                            Cursor="Hand"/>
+                                    <Image  x:Name="AddToCartButtonImage"
+                                            Style="{StaticResource AddToCartButtonImage}" />
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

@@ -11,6 +11,8 @@ namespace EMA.ViewModels
             InitDemoItems();
         }
 
+        #region Properties
+
         private List<Items> _items;
         public List<Items> Items
         {
@@ -26,6 +28,33 @@ namespace EMA.ViewModels
             set { _itemsInCart = value; }
         }
 
+        private string _searchText;
+        public string SearchText
+        {
+            get { return _searchText; }
+            set
+            {
+                _searchText = value;
+
+                OnPropertyChange();
+                OnPropertyChange("MyFilteredItems");
+            }
+        }
+
+        private string _sumCart = "0 €";
+        public string SumCart
+        {
+            get { return _sumCart; }
+            set
+            {
+                _sumCart = value;
+                OnPropertyChange();
+            }
+        }
+
+        #endregion
+
+        #region Methods
 
         private void InitDemoItems()
         {
@@ -88,30 +117,6 @@ namespace EMA.ViewModels
             }
         }
 
-        private string _searchText;
-        public string SearchText
-        {
-            get { return _searchText; }
-            set
-            {
-                _searchText = value;
-
-                OnPropertyChange();
-                OnPropertyChange("MyFilteredItems");
-            }
-        }
-
-        private string _sumCart = "0 €";
-        public string SumCart
-        {
-            get { return _sumCart; }
-            set
-            {
-                _sumCart = value;
-                OnPropertyChange();
-            }
-        }
-
         public List<Items> MyFilteredItems
         {
             get
@@ -156,5 +161,6 @@ namespace EMA.ViewModels
 
             SumCart = calculatedSum.ToString("0.00 €");
         }
+        #endregion
     }
 }
