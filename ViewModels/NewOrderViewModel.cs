@@ -146,19 +146,8 @@ namespace EMA.ViewModels
                 itemInList.IncreaseCount();
             }
 
-            CalculateSumCart();
+            SumCart = SumCalculator.CalculateSumCart(ItemsInCart);
             OnPropertyChange(nameof(ItemsInCart));
-        }
-
-        public void CalculateSumCart()
-        {
-            var calculatedSum = 0d;
-            foreach (var cartItem in ItemsInCart)
-            {
-                calculatedSum += cartItem.Sum();
-            }
-
-            SumCart = calculatedSum.ToString("0.00 €");
         }
         #endregion
     }

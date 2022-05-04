@@ -1,6 +1,7 @@
 ﻿using EMA.Models;
 using EMA.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,16 +19,20 @@ namespace EMA.Views
             MainWindowView.SetTitle("");
         }
 
-        
-
         private void BackToNewOrder(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new NewOrderView(_viewModel.Sum, _viewModel.CartItems));
+            _viewModel.DeleteEmptyCartItem(_viewModel.CartItems.ToList());
         }
 
         private void GoToOverviewButton(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new NewOrderOverviewView());
+        }
+
+        private void ComboboxCart_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _viewModel.CalculateSum();
         }
     }
 }

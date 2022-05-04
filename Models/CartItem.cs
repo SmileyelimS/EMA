@@ -3,7 +3,11 @@
     public class CartItem
     {
         public Items Item { get; set; }
-        public int Count { get; set; }
+        public int Count 
+        { 
+            get; 
+            set; 
+        }
 
         public CartItem(Items item)
         {
