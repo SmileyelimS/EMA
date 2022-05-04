@@ -107,12 +107,8 @@
                                         Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox IsEditable="True"
+                            <ComboBox Style="{StaticResource CartCombobox}"
                                       Text="{Binding Path=Count}"
-                                      FontFamily="Arial Bold"
-                                      FontSize="20"
-                                      HorizontalContentAlignment="Center"
-                                      VerticalContentAlignment="Center"
                                       ItemsSource="{Binding Path=Item.ComboboxList}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

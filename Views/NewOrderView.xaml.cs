@@ -1,6 +1,6 @@
 ﻿using EMA.Models;
 using EMA.ViewModels;
-using System.Data;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,11 +9,11 @@ namespace EMA.Views
     public partial class NewOrderView : Page
     {
         private readonly NewOrderViewModel _viewModel;
-        public NewOrderView(string sum)
+        public NewOrderView(string sum, List<CartItem> cartItems)
         {
             InitializeComponent();
 
-            _viewModel = new NewOrderViewModel(sum);
+            _viewModel = new NewOrderViewModel(sum, cartItems);
             DataContext = _viewModel;
             MainWindowView.SetTitle("Neue Bestellung erfassen");
         }

@@ -1,4 +1,6 @@
-﻿using EMA.ViewModels;
+﻿using EMA.Models;
+using EMA.ViewModels;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -19,7 +21,8 @@ namespace EMA.Views
 
         private void GoToNewOrderButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewOrderView("0 €"));
+            List<CartItem> emptyCartItemList = new List<CartItem>();
+            NavigationService.Navigate(new NewOrderView("0 €", emptyCartItemList));
         }
 
         private void GoToOldOrdersOverviewButton(object sender, RoutedEventArgs e)

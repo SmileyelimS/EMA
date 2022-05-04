@@ -6,8 +6,9 @@ namespace EMA.ViewModels
 {
     public class NewOrderViewModel : ViewModelBase
     {
-        public NewOrderViewModel(string sum)
+        public NewOrderViewModel(string sum, List<CartItem> cartItems)
         {
+            ItemsInCart = cartItems;
             SumCart = sum;
             InitDemoItems();
         }

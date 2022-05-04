@@ -22,7 +22,7 @@ namespace EMA.Views
 
         private void BackToNewOrder(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewOrderView(_viewModel.Sum));
+            NavigationService.Navigate(new NewOrderView(_viewModel.Sum, _viewModel.CartItems));
         }
 
         private void GoToOverviewButton(object sender, RoutedEventArgs e)
