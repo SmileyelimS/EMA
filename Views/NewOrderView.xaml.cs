@@ -20,6 +20,21 @@ namespace EMA.Views
 
         private void GoBackToStartPageButton(object sender, RoutedEventArgs e)
         {
+            if(_viewModel.SumCart != "0 €")
+            {
+                MessageBoxResult result = MessageBox.Show(
+                "Sind Sie sicher, dass Sie die Artikel im Warenkorb löschen und zur Startseite zurückkehren möchten?",
+                "Bestellung abbrechen", MessageBoxButton.YesNo);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        NavigationService.Navigate(new MainView());
+                        break;
+                    case MessageBoxResult.No:
+                        return;
+                }
+            }
+
             NavigationService.Navigate(new MainView());
         }
 
