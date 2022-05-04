@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EMA.ViewModels
 {
-    public class NewOrderOverviewViewmodel :ViewModelBase
+    public class NewOrderOverviewViewModel :ViewModelBase
     {
     }
 }

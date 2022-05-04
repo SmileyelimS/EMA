@@ -9,11 +9,57 @@
       Title="CartView">
 
     <Grid Background="Gray">
-        <TextBlock Text="Warenkorb"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1"
+                   Text="Warenkorb"
                    Foreground="White"
-                   FontSize="80"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   TextWrapping="WrapWithOverflow" />
+                   FontSize="40"
+                   Margin="0,15"
+                   FontFamily="Arial Bold"
+                   HorizontalAlignment="Center" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto" />
+        <DataGrid Grid.Row="2"
+                  x:Name="DataGridCart"
+                  ItemsSource="{Binding CartItems}"
+                  Style="{StaticResource DefaultDataGrid}">
+            <DataGrid.Columns>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Style="{StaticResource NewOrderButtons}"
+                Click="BackToNewOrder"
+                Margin="20,20,20,150">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Button.Resources>
+            <TextBlock Text="Zurück zur Bestellung"
+                       Style="{StaticResource NewOrderButtonsText}" />
+        </Button>
+        <Button Style="{StaticResource NewOrderButtons}"
+                VerticalAlignment="Bottom"
+                Click="GoToOverviewButton"
+                Margin="20,100,20,100">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Button.Resources>
+            <TextBlock Text="Bestellung abschließen"
+                       Style="{StaticResource NewOrderButtonsText}" />
+        </Button>
+        <TextBlock Style="{StaticResource TextSumNewOrder}"
+                   Text="Summe:"
+                   Margin="0,0,0,45" />
+        <TextBlock Style="{StaticResource TextSumNewOrder}"
+                   Text="{Binding Sum}"
+                   FontFamily="Arial Bold"
+                   Margin="0,0,0,10"/>
     </Grid>
 </Page>

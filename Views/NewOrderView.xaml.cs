@@ -30,7 +30,7 @@ namespace EMA.Views
 
         private void GoToCartButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CartView());
+            NavigationService.Navigate(new CartView(_viewModel.ItemsInCart, _viewModel.SumCart));
         }
 
         private void AddToCartButton(object sender, RoutedEventArgs e)

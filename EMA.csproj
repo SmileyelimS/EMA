@@ -5,18 +5,19 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>iconFirmaPlatzhalter.ico</ApplicationIcon>
-    <PackageIcon>iconAppPlatzhalter128.png</PackageIcon>
+    <ApplicationIcon>EMAAppIcon.ico</ApplicationIcon>
+    <PackageIcon>EMAAppIcon128.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="katzenbaby-quiz.jpg" />
     <None Remove="Resources\addTocCartClick100.png" />
     <None Remove="Resources\addTocCartDefault100.png" />
-    <None Remove="Resources\appName.png" />
     <None Remove="Resources\backgroundStartScreen.png" />
-    <None Remove="Resources\iconFirmaPlatzhalter.png" />
+    <None Remove="Resources\Firmenlogo.png" />
+    <None Remove="Resources\FirmenlogoIcon100.png" />
     <None Remove="Resources\maximize.png" />
+    <None Remove="Resources\ProgrammLogo100.png" />
     <None Remove="Resources\reduce.png" />
   </ItemGroup>
 
@@ -25,14 +26,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="iconFirmaPlatzhalter.ico" />
+    <Content Include="EMAAppIcon.ico" />
     <Content Include="Resources\backgroundStartScreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\Users\nsiebrands\Documents\Projekt Schule\iconAppPlatzhalter128.png">
+    <None Include="..\..\Users\nsiebrands\Documents\Projekt Schule\Bilder\Icons\EMAAppIcon128.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
@@ -41,8 +42,7 @@
   <ItemGroup>
     <Resource Include="Resources\addTocCartClick100.png" />
     <Resource Include="Resources\addTocCartDefault100.png" />
-    <Resource Include="Resources\appName.png" />
-    <Resource Include="Resources\iconFirmaPlatzhalter.png" />
+    <Resource Include="Resources\FirmenlogoIcon100.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,13 +50,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+    <Resource Include="Resources\ProgrammLogo100.png" />
     <Resource Include="Resources\reduce.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <SplashScreen Include="Resources\katzenbabySplashscreen.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </SplashScreen>
+    <SplashScreen Include="Resources\Firmenlogo.png" />
   </ItemGroup>
 
 </Project>

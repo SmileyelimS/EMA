@@ -59,11 +59,11 @@
                 </Button>
             </Grid>
 
-            <Image Source="\Resources\iconFirmaPlatzhalter.png"
+            <Image Source="\Resources\FirmenlogoIcon100.png"
                    HorizontalAlignment="Left"
-                   Margin="10,5,0,1" />
-            <Image Source="\Resources\appName.png"
+                   Margin="10,5,0,5" />
+        <Image Source="\Resources\ProgrammLogo100.png"
                    HorizontalAlignment="Left"
-                   Margin="50,6,0,1" />
+                   Margin="50,6,0,5" />
         </Grid>
 </Window>

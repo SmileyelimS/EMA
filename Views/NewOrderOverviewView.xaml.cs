@@ -5,12 +5,12 @@ namespace EMA.Views
 {
     public partial class NewOrderOverviewView : Page
     {
-        private readonly NewOrderOverviewViewmodel _viewModel;
+        private readonly NewOrderOverviewViewModel _viewModel;
         public NewOrderOverviewView()
         {
             InitializeComponent();
 
-            _viewModel = new NewOrderOverviewViewmodel();
+            _viewModel = new NewOrderOverviewViewModel();
             DataContext = _viewModel;
             MainWindowView.SetTitle("Bestellübersicht");
         }
