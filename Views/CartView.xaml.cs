@@ -9,11 +9,11 @@ namespace EMA.Views
     public partial class CartView : Page
     {
         private readonly CartViewModel _viewModel;
-        public CartView(Dictionary<Items, int> dictionaryCartItems, string sum)
+        public CartView(List<CartItem> cartItems, string sum)
         {
             InitializeComponent();
 
-            _viewModel = new CartViewModel(dictionaryCartItems, sum);
+            _viewModel = new CartViewModel(cartItems, sum);
             DataContext = _viewModel;
             MainWindowView.SetTitle("");
         }
@@ -22,7 +22,7 @@ namespace EMA.Views
 
         private void BackToNewOrder(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewOrderView());
+            NavigationService.Navigate(new NewOrderView(_viewModel.Sum));
         }
 
         private void GoToOverviewButton(object sender, RoutedEventArgs e)

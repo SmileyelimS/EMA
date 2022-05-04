@@ -1,4 +1,6 @@
-﻿namespace EMA.Models
+﻿using System.Collections.Generic;
+
+namespace EMA.Models
 {
     public class Items
     {
@@ -24,5 +26,10 @@
 
         public double Price => PriceSelledUnitEUR / 100d;
         public string PriceText => $"{Price.ToString("0.00")}" + " " + $"€";
+
+        public List<int> ComboboxList { get; set; } = new List<int>()
+        {
+            0,1,2,3,4,5,6,7,8,9,10
+        };
     }
 }

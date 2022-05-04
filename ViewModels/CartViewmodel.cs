@@ -5,13 +5,13 @@ namespace EMA.ViewModels
 {
     public class CartViewModel :ViewModelBase
     {
-        public CartViewModel(Dictionary<Items, int> dictionaryCartItems, string sum)
+        public CartViewModel(List<CartItem> cartItems, string sum)
         {
             Sum = sum;
-            CartItems = dictionaryCartItems;
+            CartItems = cartItems;
         }
 
         public string Sum { get; set; }
-        public Dictionary<Items, int> CartItems { get; set; }
+        public List<CartItem> CartItems { get; set; }
     }
 }

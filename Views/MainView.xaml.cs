@@ -19,7 +19,7 @@ namespace EMA.Views
 
         private void GoToNewOrderButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewOrderView());
+            NavigationService.Navigate(new NewOrderView("0 €"));
         }
 
         private void GoToOldOrdersOverviewButton(object sender, RoutedEventArgs e)

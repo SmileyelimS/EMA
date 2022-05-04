@@ -28,7 +28,95 @@
                   ItemsSource="{Binding CartItems}"
                   Style="{StaticResource DefaultDataGrid}">
             <DataGrid.Columns>
-                
+                <DataGridTemplateColumn Header="Bild"
+                                        HeaderStyle="{StaticResource OrderTableHeader}" 
+                                        IsReadOnly="True">
+                    <DataGridTemplateColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="" />
+                        </Style>
+                    </DataGridTemplateColumn.CellStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=Item.PicturePath}"
+                                   Height="50">
+                                <Image.ToolTip>
+                                    <ToolTip>
+                                        <StackPanel>
+                                            <Image Source="{Binding Path=Item.PicturePath}"
+                                                   Height="600" />
+                                        </StackPanel>
+                                    </ToolTip>
+                                </Image.ToolTip>
+                            </Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Produktname"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        CellStyle="{StaticResource DataGridTemplateDesign}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Item.Name, Mode=OneWay}"
+                                           Style="{StaticResource DataGridTextNormal}" />
+                                <TextBlock Text="{Binding Path=Item.Description, Mode=OneWay}"
+                                           Style="{StaticResource DataGridTextSubtitle}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Packungsgröße"
+                                    HeaderStyle="{StaticResource OrderTableHeader}"
+                                    CellStyle="{StaticResource DataGridTextCenter}"
+                                    Binding="{Binding Path=Item.PackageVolume, Mode=OneWay}" />
+                <DataGridTextColumn Header="Verkaufte Menge"
+                                    HeaderStyle="{StaticResource OrderTableHeader}"
+                                    CellStyle="{StaticResource DataGridTextCenter}"
+                                    Binding="{Binding Path=Item.SelledAmountString, Mode=OneWay}" />
+                <DataGridTextColumn Header="Preis"
+                                    MinWidth="100"
+                                    HeaderStyle="{StaticResource OrderTableHeader}"
+                                    CellStyle="{StaticResource DataGridTextCenter}"
+                                    Binding="{Binding Path=Item.PriceText, Mode=OneWay}" />
+                <DataGridTemplateColumn Header="Händlerinformation"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        CellStyle="{StaticResource DataGridTemplateDesign}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Item.CompanyName, Mode=OneWay}"
+                                           Style="{StaticResource DataGridTextNormal}" />
+                                <TextBlock Text="{Binding Path=Item.ArticleNumber, Mode=OneWay}"
+                                           Style="{StaticResource DataGridTextSubtitle}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Verfügbarkeit"
+                                    HeaderStyle="{StaticResource OrderTableHeader}"
+                                    CellStyle="{StaticResource DataGridTextCenter}"
+                                    Binding="{Binding Path=Item.Availability, Mode=OneWay}" />
+                <DataGridTextColumn Header="Lieferzeit"
+                                    MinWidth="120"
+                                    HeaderStyle="{StaticResource OrderTableHeader}"
+                                    CellStyle="{StaticResource DataGridTextCenter}"
+                                    Binding="{Binding Path=Item.DeliveryTime, Mode=OneWay}" />
+                <DataGridTemplateColumn Header="Bestellmenge"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox IsEditable="True"
+                                      Text="{Binding Path=Count}"
+                                      FontFamily="Arial Bold"
+                                      FontSize="20"
+                                      HorizontalContentAlignment="Center"
+                                      VerticalContentAlignment="Center"
+                                      ItemsSource="{Binding Path=Item.ComboboxList}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Style="{StaticResource NewOrderButtons}"

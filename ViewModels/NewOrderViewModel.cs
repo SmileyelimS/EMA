@@ -6,8 +6,9 @@ namespace EMA.ViewModels
 {
     public class NewOrderViewModel : ViewModelBase
     {
-        public NewOrderViewModel()
+        public NewOrderViewModel(string sum)
         {
+            SumCart = sum;
             InitDemoItems();
         }
 
@@ -20,9 +21,8 @@ namespace EMA.ViewModels
             set { _items = value; }
         }
 
-        private Dictionary<Items, int> _itemsInCart = new Dictionary<Items, int>();
-
-        public Dictionary<Items, int> ItemsInCart
+        private List<CartItem> _itemsInCart = new List<CartItem>();
+        public List<CartItem> ItemsInCart
         {
             get { return _itemsInCart; }
             set { _itemsInCart = value; }
@@ -37,7 +37,7 @@ namespace EMA.ViewModels
                 _searchText = value;
 
                 OnPropertyChange();
-                OnPropertyChange("MyFilteredItems");
+                OnPropertyChange(nameof(MyFilteredItems));
             }
         }
 
@@ -134,29 +134,27 @@ namespace EMA.ViewModels
 
         public void AddToCart(Items item)
         {
-            if (ItemsInCart.ContainsKey(item))
+            var itemInList = ItemsInCart.FirstOrDefault(x => x.Item == item);
+
+            if (itemInList is null)
             {
-                var value = ItemsInCart.GetValueOrDefault(item);
-                value++;
-                ItemsInCart.Remove(item);
-                ItemsInCart.Add(item, value);
+                ItemsInCart.Add(new CartItem(item));
             }
             else
             {
-                ItemsInCart.Add(item, 1);
+                itemInList.IncreaseCount();
             }
 
             CalculateSumCart();
-
             OnPropertyChange(nameof(ItemsInCart));
         }
 
         public void CalculateSumCart()
         {
             var calculatedSum = 0d;
-            foreach (var keyValuePair in ItemsInCart)
+            foreach (var cartItem in ItemsInCart)
             {
-                calculatedSum += keyValuePair.Key.Price * keyValuePair.Value;
+                calculatedSum += cartItem.Sum();
             }
 
             SumCart = calculatedSum.ToString("0.00 €");

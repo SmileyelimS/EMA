@@ -9,11 +9,11 @@ namespace EMA.Views
     public partial class NewOrderView : Page
     {
         private readonly NewOrderViewModel _viewModel;
-        public NewOrderView()
+        public NewOrderView(string sum)
         {
             InitializeComponent();
 
-            _viewModel = new NewOrderViewModel();
+            _viewModel = new NewOrderViewModel(sum);
             DataContext = _viewModel;
             MainWindowView.SetTitle("Neue Bestellung erfassen");
         }
