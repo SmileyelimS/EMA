@@ -42,7 +42,7 @@ namespace EMA.Views
         {
             if (_viewModel.SumCart != "0 €")
             {
-                NavigationService.Navigate(new NewOrderOverviewView());
+                NavigationService.Navigate(new NewOrderOverviewView(_viewModel.SumCart, _viewModel.ItemsInCart));
             }
 
             GoToOverview.IsEnabled = false;
@@ -61,6 +61,10 @@ namespace EMA.Views
         private void AddToCartButton(object sender, RoutedEventArgs e)
         {
             Items clickedItem = (Items)((Button)e.Source).DataContext;
+            if(clickedItem.Availability == "Nicht verfügbar")
+            {
+                return;
+            }
             _viewModel.AddToCart(clickedItem);
 
             GoToOverview.IsEnabled = true;

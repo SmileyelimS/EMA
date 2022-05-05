@@ -22,17 +22,27 @@ namespace EMA.Views
         private void BackToNewOrder(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new NewOrderView(_viewModel.Sum, _viewModel.CartItems));
-            _viewModel.DeleteEmptyCartItem(_viewModel.CartItems.ToList());
+            _viewModel.DeleteEmptyCartItem();
         }
 
         private void GoToOverviewButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewOrderOverviewView());
+            if (_viewModel.Sum != "0,00 €")
+            {
+                NavigationService.Navigate(new NewOrderOverviewView(_viewModel.Sum, _viewModel.CartItems));
+            }
+
+            GoToOverview.IsEnabled = false;
         }
 
         private void ComboboxCart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _viewModel.CalculateSum();
+
+            if (_viewModel.Sum != "0,00 €")
+            {
+                GoToOverview.IsEnabled = true;
+            }
         }
     }
 }

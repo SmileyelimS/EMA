@@ -7,6 +7,9 @@
       mc:Ignorable="d"
       d:DesignHeight="640" d:DesignWidth="1120"
       Title="NewOrderView">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Page.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <!--HorizontalScrollBarVisibility="Auto">-->
         <Grid Background="Gray"
@@ -111,7 +114,9 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Background="Transparent"
-                                        Click="AddToCartButton" 
+                                        Click="AddToCartButton"
+                                        Visibility="{Binding Path=IsAvailable,
+                                    Converter={StaticResource BoolToVis}}"
                                         ClickMode="Press"
                                         Cursor="Hand" >
                                     <Image  x:Name="AddToCartButtonImage"
@@ -150,7 +155,8 @@
             <Button Style="{StaticResource NewOrderButtons}"
                     VerticalAlignment="Bottom"
                     Click="GoBackToStartPageButton"
-                    Margin="20,120">
+                    Margin="20,120"
+                    Background="DarkRed">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10" />

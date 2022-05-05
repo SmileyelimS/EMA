@@ -22,24 +22,27 @@ namespace EMA.ViewModels
                 OnPropertyChange();
             }
         }
-        public List<CartItem> CartItems { get; set; }
+
+        private List<CartItem> _cartItems;
+
+        public List<CartItem> CartItems
+        {
+            get => _cartItems;
+            set 
+            { 
+                _cartItems = value;
+                OnPropertyChange();
+            }
+        }
 
         public void CalculateSum()
         {
             Sum = SumCalculator.CalculateSumCart(CartItems);
         }
 
-        public void DeleteEmptyCartItem(List<CartItem> CartItemsToUpdate)
+        public void DeleteEmptyCartItem()
         {
-            foreach (var item in CartItemsToUpdate)
-            {
-                if(item.Count == 0)
-                {
-                    CartItems.Remove(item);
-                }
-            }
-
-            OnPropertyChange(nameof(CartItems));
+            CartItems = DeleteOfEmptyItems.DeleteEmptyItem(CartItems);
         }
     }
 }

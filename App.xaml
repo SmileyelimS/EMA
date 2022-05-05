@@ -203,6 +203,14 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Width" Value="150" /> 
         </Style>
+        <Style TargetType="TextBlock"
+               x:Key="HeadlinesOverview">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Arial Bold" />
+            <Setter Property="Margin" Value="50,5" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
         
         <!--Bilder-->
         <Style TargetType="Image"

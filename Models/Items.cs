@@ -18,6 +18,8 @@ namespace EMA.Models
         public string Availability { get; set; }
         public string DeliveryTime { get; set; }
 
+        public bool IsAvailable => "Auf Lager".Equals(Availability);
+
         public string PicturePath => $@"C:\Users\nsiebrands\Documents\Projekt Schule\Bilder\Datenbank bsp\{Picture}";
         public string PackageVolume => $"{VolumePack}" + " " + $"{VolumeUnitPack}";
         public string SelledAmountString => $"{SelledAmount}" + " " + $"{SelledUnit}";

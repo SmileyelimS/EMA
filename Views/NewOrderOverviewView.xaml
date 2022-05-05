@@ -9,11 +9,161 @@
       Title="NewOrderOverviewView">
 
     <Grid Background="Gray">
-        <TextBlock Text="Bestellübersicht"
-                   Foreground="White"
-                   FontSize="80"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   TextWrapping="WrapWithOverflow" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1"
+                   Style="{StaticResource HeadlinesOverview}"
+                   Text="Bestelldaten:" />
+        <TextBlock Grid.Row="3"
+                   Style="{StaticResource HeadlinesOverview}"
+                   Text="Artikelinformationen:" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto" />
+        <DataGrid Grid.Row="4"
+                  x:Name="DataGridCart"
+                  ItemsSource="{Binding ItemsForOrder}"
+                  Style="{StaticResource DefaultDataGrid}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Bild"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        IsReadOnly="True">
+                    <DataGridTemplateColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip"
+                                    Value="" />
+                        </Style>
+                    </DataGridTemplateColumn.CellStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=Item.PicturePath}"
+                                   Height="50">
+                                <Image.ToolTip>
+                                    <ToolTip>
+                                        <StackPanel>
+                                            <Image Source="{Binding Path=Item.PicturePath}"
+                                                   Height="600" />
+                                        </StackPanel>
+                                    </ToolTip>
+                                </Image.ToolTip>
+                            </Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Produktname"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        CellStyle="{StaticResource DataGridTemplateDesign}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Item.Name, Mode=OneWay}"
+                                           Style="{StaticResource DataGridTextNormal}" />
+                                <TextBlock Text="{Binding Path=Item.Description, Mode=OneWay}"
+                                           Style="{StaticResource DataGridTextSubtitle}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Packungsgröße"
+                                    HeaderStyle="{StaticResource OrderTableHeader}"
+                                    CellStyle="{StaticResource DataGridTextCenter}"
+                                    Binding="{Binding Path=Item.PackageVolume, Mode=OneWay}" />
+                <DataGridTextColumn Header="Verkaufte Menge"
+                                    HeaderStyle="{StaticResource OrderTableHeader}"
+                                    CellStyle="{StaticResource DataGridTextCenter}"
+                                    Binding="{Binding Path=Item.SelledAmountString, Mode=OneWay}" />
+                <DataGridTextColumn Header="Preis"
+                                    MinWidth="100"
+                                    HeaderStyle="{StaticResource OrderTableHeader}"
+                                    CellStyle="{StaticResource DataGridTextCenter}"
+                                    Binding="{Binding Path=Item.PriceText, Mode=OneWay}" />
+                <DataGridTemplateColumn Header="Händlerinformation"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        CellStyle="{StaticResource DataGridTemplateDesign}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Item.CompanyName, Mode=OneWay}"
+                                           Style="{StaticResource DataGridTextNormal}" />
+                                <TextBlock Text="{Binding Path=Item.ArticleNumber, Mode=OneWay}"
+                                           Style="{StaticResource DataGridTextSubtitle}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Lieferzeit"
+                                    MinWidth="120"
+                                    HeaderStyle="{StaticResource OrderTableHeader}"
+                                    CellStyle="{StaticResource DataGridTextCenter}"
+                                    Binding="{Binding Path=Item.DeliveryTime, Mode=OneWay}" />
+                <DataGridTemplateColumn Header="Bestellmenge"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox x:Name="ComboboxOrderOverview"
+                                      Style="{StaticResource CartCombobox}"
+                                      SelectedItem="{Binding Path=Count, Mode=TwoWay,
+                                                    UpdateSourceTrigger=PropertyChanged}"
+                                      SelectionChanged="ComboboxOrderOverview_SelectionChanged"
+                                      ItemsSource="{Binding Path=Item.ComboboxList}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Style="{StaticResource NewOrderButtons}"
+                Grid.Row="4"
+                Click="BackToNewOrderButton"
+                VerticalAlignment="Top"
+                Margin="20,20,20,150">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Button.Resources>
+            <TextBlock Text="Einkauf fortsetzen"
+                       Style="{StaticResource NewOrderButtonsText}" />
+        </Button>
+        <Button Style="{StaticResource NewOrderButtons}"
+                Grid.Row="4"
+                VerticalAlignment="Center"
+                Click="CompletePurchaseButton"
+                Margin="20,100,20,100">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Button.Resources>
+            <TextBlock Text="Artikel kaufen"
+                       Style="{StaticResource NewOrderButtonsText}" />
+        </Button>
+        <Button Style="{StaticResource NewOrderButtons}"
+                Grid.Row="4"
+                VerticalAlignment="Bottom"
+                Click="DeleteOrderButton"
+                Margin="20,100,20,100"
+                Background="DarkRed">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Button.Resources>
+            <TextBlock Text="Bestellung verwerfen"
+                       Style="{StaticResource NewOrderButtonsText}" />
+        </Button>
+        <TextBlock Style="{StaticResource TextSumNewOrder}"
+                   Grid.Row="4"
+                   Text="Summe:"
+                   Margin="0,0,0,45" />
+        <TextBlock Style="{StaticResource TextSumNewOrder}"
+                   Grid.Row="4"
+                   Text="{Binding SumItemsForOrder}"
+                   FontFamily="Arial Bold"
+                   Margin="0,0,0,10" />
     </Grid>
 </Page>

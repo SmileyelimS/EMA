@@ -80,7 +80,7 @@ namespace EMA.ViewModels
                     PriceSelledUnitEUR = 4999,
                     Dealer = dealer,
                     DealerItemNumber = 12077448,
-                    Availability = "Auf Lager",
+                    Availability = "Nicht verfügbar",
                     DeliveryTime = "1-2  Werktage"
                 });
                 Items.Add(new Items

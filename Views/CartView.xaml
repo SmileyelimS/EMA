@@ -130,6 +130,7 @@
                        Style="{StaticResource NewOrderButtonsText}" />
         </Button>
         <Button Style="{StaticResource NewOrderButtons}"
+                x:Name="GoToOverview"
                 VerticalAlignment="Bottom"
                 Click="GoToOverviewButton"
                 Margin="20,100,20,100">
