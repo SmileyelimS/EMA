@@ -197,6 +197,7 @@
                x:Key="TextSumNewOrder">
             <Setter Property="Grid.Row" Value="2" />
             <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="TextAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="FontSize" Value="30" />
             <Setter Property="FontFamily" Value="Arial" />
@@ -208,7 +209,7 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontFamily" Value="Arial Bold" />
-            <Setter Property="Margin" Value="50,5" />
+            <Setter Property="Margin" Value="65,5" />
             <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         

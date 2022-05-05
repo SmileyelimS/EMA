@@ -23,17 +23,7 @@ namespace EMA.ViewModels
             }
         }
 
-        private List<CartItem> _cartItems;
-
-        public List<CartItem> CartItems
-        {
-            get => _cartItems;
-            set 
-            { 
-                _cartItems = value;
-                OnPropertyChange();
-            }
-        }
+        public List<CartItem> CartItems { get; set; }
 
         public void CalculateSum()
         {

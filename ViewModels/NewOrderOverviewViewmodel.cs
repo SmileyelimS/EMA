@@ -1,9 +1,6 @@
 ﻿using EMA.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EMA.ViewModels
 {
@@ -13,6 +10,8 @@ namespace EMA.ViewModels
         {
             ItemsForOrder = orderItems;
             SumItemsForOrder = sumOrderItems;
+
+            CalculateTotalShipping();
         }
 
         private List<CartItem> _itemsForOrder = new List<CartItem>();
@@ -33,11 +32,49 @@ namespace EMA.ViewModels
             }
         }
 
+        private string _sumShipping;
+        public string SumShipping
+        {
+            get { return _sumShipping; }
+            set 
+            { 
+                _sumShipping = value;
+                OnPropertyChange();
+            }
+        }
+
         public void DeleteEmptyOrderItem()
         {
             ItemsForOrder = DeleteOfEmptyItems.DeleteEmptyItem(ItemsForOrder);
         }
-    }
 
-    
+        public void CalculateOrderSum()
+        {
+            SumItemsForOrder = SumCalculator.CalculateSumCart(ItemsForOrder);
+        }
+        
+        public void CalculateTotalShipping()
+        {
+            var dealers = ItemsForOrder.GroupBy(x => x.Item.Dealer.DealerID).ToList();
+            var deliveryCost = 0d;
+            for (int i = 0; i < dealers.Count; i++)
+            {
+                var dealer = ItemsForOrder.First(x => x.Item.Dealer.DealerID == dealers[i].Key).Item.Dealer;
+                var hasFreeDelivery = IsFreeDeliveryReached(ItemsForOrder, dealer);
+                if (!hasFreeDelivery)
+                {
+                    deliveryCost += dealer.StandardDeliveryDeEUR / 100d;
+                }
+            }
+
+            SumShipping = deliveryCost.ToString("0.00 €");
+        }
+
+        public bool IsFreeDeliveryReached(List<CartItem> cardItemsForDealer, Dealer dealer)
+        {
+            var sum = cardItemsForDealer.Where(x => x.Item.Dealer == dealer).Sum(x => x.Count * x.Item.Price);
+            var minValue = dealer.FreeDeliveryFromEUR / 100d;
+            return sum >= minValue;
+        }
+    }
 }

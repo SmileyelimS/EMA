@@ -8,7 +8,8 @@
       d:DesignHeight="640" d:DesignWidth="1120"
       Title="NewOrderOverviewView">
 
-    <Grid Background="Gray">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="Gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -27,7 +28,8 @@
         <DataGrid Grid.Row="4"
                   x:Name="DataGridCart"
                   ItemsSource="{Binding ItemsForOrder}"
-                  Style="{StaticResource DefaultDataGrid}">
+                  Style="{StaticResource DefaultDataGrid}"
+                  Margin="60,0,190,0">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Bild"
                                         HeaderStyle="{StaticResource OrderTableHeader}"
@@ -91,7 +93,9 @@
                                            Style="{StaticResource DataGridTextNormal}" />
                                 <TextBlock Text="{Binding Path=Item.ArticleNumber, Mode=OneWay}"
                                            Style="{StaticResource DataGridTextSubtitle}" />
-                            </StackPanel>
+                                    <TextBlock Text="{Binding Path=FreeDeliveryFrom, Mode=OneWay}"
+                                           Style="{StaticResource DataGridTextSubtitle}" />
+                                </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -120,7 +124,7 @@
                 Grid.Row="4"
                 Click="BackToNewOrderButton"
                 VerticalAlignment="Top"
-                Margin="20,20,20,150">
+                Margin="20,20,35,150">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10" />
@@ -133,7 +137,7 @@
                 Grid.Row="4"
                 VerticalAlignment="Center"
                 Click="CompletePurchaseButton"
-                Margin="20,100,20,100">
+                Margin="20,100,35,100">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10" />
@@ -146,7 +150,7 @@
                 Grid.Row="4"
                 VerticalAlignment="Bottom"
                 Click="DeleteOrderButton"
-                Margin="20,100,20,100"
+                Margin="20,100,35,170"
                 Background="DarkRed">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -158,12 +162,24 @@
         </Button>
         <TextBlock Style="{StaticResource TextSumNewOrder}"
                    Grid.Row="4"
-                   Text="Summe:"
-                   Margin="0,0,0,45" />
+                   Text="Versand:"
+                   FontSize="23"
+                   Margin="10,0,15,120" />
+        <TextBlock Style="{StaticResource TextSumNewOrder}"
+                   Grid.Row="4"
+                   Text="{Binding SumShipping}"
+                   FontSize="22"
+                   FontFamily="Arial Bold"
+                   Margin="10,0,15,90" />
+        <TextBlock Style="{StaticResource TextSumNewOrder}"
+                   Grid.Row="4"
+                   Text="Zu zahlen:"
+                   Margin="10,0,15,45" />
         <TextBlock Style="{StaticResource TextSumNewOrder}"
                    Grid.Row="4"
                    Text="{Binding SumItemsForOrder}"
                    FontFamily="Arial Bold"
-                   Margin="0,0,0,10" />
+                   Margin="10,0,15,10" />
     </Grid>
+    </ScrollViewer>
 </Page>

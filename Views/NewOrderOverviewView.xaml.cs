@@ -47,7 +47,8 @@ namespace EMA.Views
 
         private void ComboboxOrderOverview_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            _viewModel.CalculateOrderSum();
+            _viewModel.CalculateTotalShipping();
         }
     }
 }

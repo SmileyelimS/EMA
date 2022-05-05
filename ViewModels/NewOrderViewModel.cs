@@ -61,7 +61,19 @@ namespace EMA.ViewModels
         {
             var dealer = new Dealer
             {
-                CompanyName = "Schwarzkopf"
+                CompanyName = "Schwarzkopf",
+                MinimumOrderValueEUR = 5000,
+                FreeDeliveryFromEUR = 8000,
+                StandardDeliveryDeEUR = 399,
+                DealerID = 1
+            };
+            var dealer2 = new Dealer
+            {
+                CompanyName = "Mach Irgendwas",
+                MinimumOrderValueEUR = 5000,
+                FreeDeliveryFromEUR = 20000,
+                StandardDeliveryDeEUR = 399,
+                DealerID = 2
             };
             Items = new List<Items>();
 
@@ -78,9 +90,9 @@ namespace EMA.ViewModels
                     SelledAmount = 10,
                     SelledUnit = "Stk",
                     PriceSelledUnitEUR = 4999,
-                    Dealer = dealer,
+                    Dealer = dealer2,
                     DealerItemNumber = 12077448,
-                    Availability = "Nicht verfügbar",
+                    Availability = "Auf Lager",
                     DeliveryTime = "1-2  Werktage"
                 });
                 Items.Add(new Items
