@@ -123,6 +123,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button Style="{StaticResource NewOrderButtons}"
+                    x:Name="GoToCart"
                     VerticalAlignment="Top"
                     Click="GoToCartButton">
                 <Button.Resources>
@@ -134,6 +135,7 @@
                            Style="{StaticResource NewOrderButtonsText}" />
             </Button>
             <Button Style="{StaticResource NewOrderButtons}"
+                    x:Name="GoToOverview"
                     VerticalAlignment="Center"
                     Click="GoToOverviewButton"
                     Margin="20,100">

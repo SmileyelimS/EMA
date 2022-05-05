@@ -110,10 +110,9 @@
                             <ComboBox x:Name="ComboboxCart" 
                                       Style="{StaticResource CartCombobox}"
                                       SelectedItem="{Binding Path=Count, Mode=TwoWay,
-                                UpdateSourceTrigger=PropertyChanged}"
+                                                    UpdateSourceTrigger=PropertyChanged}"
                                       SelectionChanged="ComboboxCart_SelectionChanged"
-                                      ItemsSource="{Binding Path=Item.ComboboxList}"
-                                      />
+                                      ItemsSource="{Binding Path=Item.ComboboxList}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

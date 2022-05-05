@@ -40,18 +40,31 @@ namespace EMA.Views
 
         private void GoToOverviewButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewOrderOverviewView());
+            if (_viewModel.SumCart != "0 €")
+            {
+                NavigationService.Navigate(new NewOrderOverviewView());
+            }
+
+            GoToOverview.IsEnabled = false;
         }
 
         private void GoToCartButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CartView(_viewModel.ItemsInCart, _viewModel.SumCart));
+            if (_viewModel.SumCart != "0 €")
+            {
+                NavigationService.Navigate(new CartView(_viewModel.ItemsInCart, _viewModel.SumCart));
+            }
+
+            GoToCart.IsEnabled = false;
         }
 
         private void AddToCartButton(object sender, RoutedEventArgs e)
         {
             Items clickedItem = (Items)((Button)e.Source).DataContext;
             _viewModel.AddToCart(clickedItem);
+
+            GoToOverview.IsEnabled = true;
+            GoToCart.IsEnabled = true;
         }
 
         private void PlaceholderSearchbar_GotFocus(object sender, RoutedEventArgs e)

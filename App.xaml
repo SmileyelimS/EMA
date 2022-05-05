@@ -161,7 +161,7 @@
         </Style>
         <Style TargetType="ComboBox"
                x:Key="CartCombobox">
-            <Setter Property="IsEditable" Value="True" />
+            <Setter Property="IsEditable" Value="False" />
             <Setter Property="FontFamily" Value="Arial Bold" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
