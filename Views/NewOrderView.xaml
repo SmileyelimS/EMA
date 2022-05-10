@@ -86,7 +86,7 @@
                                         HeaderStyle="{StaticResource OrderTableHeader}"
                                         CellStyle="{StaticResource DataGridTextCenter}"
                                         Binding="{Binding Path=PriceText, Mode=OneWay}" />
-                    <DataGridTemplateColumn Header="Händlerinformation"
+                    <DataGridTemplateColumn Header="Händlerinformationen"
                                             HeaderStyle="{StaticResource OrderTableHeader}"
                                             CellStyle="{StaticResource DataGridTemplateDesign}">
                         <DataGridTemplateColumn.CellTemplate>

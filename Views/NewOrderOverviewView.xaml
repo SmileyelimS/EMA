@@ -21,6 +21,13 @@
         <TextBlock Grid.Row="1"
                    Style="{StaticResource HeadlinesOverview}"
                    Text="Bestelldaten:" />
+        <DataGrid Grid.Row="2"
+                  x:Name="DataGridOrderData"
+                  ItemsSource="{Binding }"
+                  Style="{StaticResource DefaultDataGrid}"
+                  Margin="60,0,190,0">
+                
+        </DataGrid>   
         <TextBlock Grid.Row="3"
                    Style="{StaticResource HeadlinesOverview}"
                    Text="Artikelinformationen:" />
@@ -83,7 +90,7 @@
                                     HeaderStyle="{StaticResource OrderTableHeader}"
                                     CellStyle="{StaticResource DataGridTextCenter}"
                                     Binding="{Binding Path=Item.PriceText, Mode=OneWay}" />
-                <DataGridTemplateColumn Header="Händlerinformation"
+                <DataGridTemplateColumn Header="Händlerinformationen"
                                         HeaderStyle="{StaticResource OrderTableHeader}"
                                         CellStyle="{StaticResource DataGridTemplateDesign}">
                     <DataGridTemplateColumn.CellTemplate>
@@ -177,7 +184,7 @@
                    Margin="10,0,15,45" />
         <TextBlock Style="{StaticResource TextSumNewOrder}"
                    Grid.Row="4"
-                   Text="{Binding SumItemsForOrder}"
+                   Text="{Binding TotalPrice}"
                    FontFamily="Arial Bold"
                    Margin="10,0,15,10" />
     </Grid>

@@ -49,6 +49,7 @@ namespace EMA.Views
         {
             _viewModel.CalculateOrderSum();
             _viewModel.CalculateTotalShipping();
+            _viewModel.GetTotalPrice();
         }
     }
 }

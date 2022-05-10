@@ -1,4 +1,5 @@
 ﻿using EMA.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,7 @@ namespace EMA.ViewModels
             SumItemsForOrder = sumOrderItems;
 
             CalculateTotalShipping();
+            GetTotalPrice();
         }
 
         private List<CartItem> _itemsForOrder = new List<CartItem>();
@@ -42,6 +44,19 @@ namespace EMA.ViewModels
                 OnPropertyChange();
             }
         }
+
+        private string _totalPrice;
+
+        public string TotalPrice
+        {
+            get { return _totalPrice; }
+            set 
+            { 
+                _totalPrice = value;
+                OnPropertyChange();
+            }
+        }
+
 
         public void DeleteEmptyOrderItem()
         {
@@ -75,6 +90,21 @@ namespace EMA.ViewModels
             var sum = cardItemsForDealer.Where(x => x.Item.Dealer == dealer).Sum(x => x.Count * x.Item.Price);
             var minValue = dealer.FreeDeliveryFromEUR / 100d;
             return sum >= minValue;
+        }
+
+        public void GetTotalPrice()
+        {
+            string[] splitSumItemsForOrder = SumItemsForOrder.Split(" ");
+            var onlyNumbersFromSumItemsForOrder = splitSumItemsForOrder[0];
+
+            string[] splitSumShipping = SumShipping.Split(" ");
+            var onlyNumbersFromSumShipping = splitSumShipping[0];
+
+            double totalPriceDouble = Convert.ToDouble(onlyNumbersFromSumItemsForOrder) + Convert.ToDouble(onlyNumbersFromSumShipping); 
+
+            var totalPrice = totalPriceDouble.ToString("0.00 €");
+
+            TotalPrice = totalPrice;
         }
     }
 }
