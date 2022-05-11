@@ -47,6 +47,7 @@ namespace EMA.Views
             _viewModel.DisableTextBoxes();
             SaveChanges.Visibility = Visibility.Collapsed;
             Cancel.Visibility = Visibility.Collapsed;
+            //Todo: In Datenbank speichern
         }
 
         private void CancelButton(object sender, RoutedEventArgs e)

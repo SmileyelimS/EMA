@@ -27,7 +27,14 @@ namespace EMA.Views
 
         private void CompletePurchaseButton(object sender, RoutedEventArgs e)
         {
+            if(_viewModel.BillViaAddress || _viewModel.BillViaEMail)
+            {
+                //Todo: In Datenbank speichern
+                return;
+            }
 
+            MessageBox.Show("Sie müssen mindestens eine Option für die Rechnungsadresse auswählen.",
+                "Bestellung abschließen nicht möglich!", MessageBoxButton.OK);
         }
 
         private void DeleteOrderButton(object sender, RoutedEventArgs e)
@@ -50,6 +57,11 @@ namespace EMA.Views
             _viewModel.CalculateOrderSum();
             _viewModel.CalculateTotalShipping();
             _viewModel.GetTotalPrice();
+        }
+
+        private void ChangeAddressButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new UserInformationsView(_viewModel.SumItemsForOrder, _viewModel.ItemsForOrder));
         }
     }
 }
