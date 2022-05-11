@@ -32,7 +32,7 @@ namespace EMA.Views
 
         private void GoToUserInformationsButton(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new UserInformationsView());
+            NavigationService.Navigate(new UserInformationsView(string.Empty, new List<CartItem>()));
         }
     }
 }

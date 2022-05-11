@@ -4,7 +4,7 @@
     {
         public int OrdersID { get; set; }
         public int ItemsID { get; set; }
-        public int SelledAmountOrderedItem { get; set; }
-        public int PriceSelledUnitWhenOrderingEUR { get; set; }
+        public int SelledAmountItem { get; set; }
+        public int PriceEUR { get; set; }
     }
 }

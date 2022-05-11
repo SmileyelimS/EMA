@@ -7,15 +7,238 @@
       mc:Ignorable="d"
       d:DesignHeight="640"
       d:DesignWidth="1120"
+      x:Name="page"
       Title="UserInformationsView">
 
-    <Grid Background="Gray">
-        <TextBlock Text="Nutzer - Informationen"
-                   TextWrapping="WrapWithOverflow"
-                   TextAlignment="Center"
-                   Foreground="White"
-                   FontSize="100"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center" />
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="Gray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <!--Kundendaten-->
+            <TextBlock Grid.Row="1"
+                       Style="{StaticResource HeadlinesUserInfo}"
+                       Text="Meine Daten"
+                       Margin="65,50,0,10"/>
+            <Button Style="{StaticResource EditUserInfoButton}"
+                    x:Name="EditUserInfo"
+                    Click="EditCustomerDataButton">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Meine Daten ändern"
+                           Style="{StaticResource NewOrderButtonsText}" />
+            </Button>
+            <Button Style="{StaticResource NewOrderButtons}"
+                    x:Name="SaveChanges"
+                    Grid.Row="2"
+                    Margin="20,90,35,0"
+                    VerticalAlignment="Top"
+                    Click="SaveChangesButton">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Änderungen speichern"
+                           Style="{StaticResource NewOrderButtonsText}" />
+            </Button>
+            <Button Style="{StaticResource NewOrderButtons}"
+                    x:Name="Cancel"
+                    Grid.Row="2"
+                    Margin="20,100,35,0"
+                    VerticalAlignment="Center"
+                    Click="CancelButton">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Abbrechen"
+                           Style="{StaticResource NewOrderButtonsText}" />
+            </Button>
+            <DataGrid Grid.Row="2"
+                      x:Name="DataGridMyData"
+                      ItemsSource="{Binding CustomerData}"
+                      Style="{StaticResource DefaultDataGrid}"
+                      Margin="60,0,190,0"
+                      HeadersVisibility="None"
+                      GridLinesVisibility="None">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="Ansprechpartner :"
+                                               Style="{StaticResource DataGridTextCustomerData}"
+                                               Margin="80,40,15,30"/>
+                                    <TextBlock Text="Firmenname :"
+                                               Style="{StaticResource DataGridTextCustomerData}" />
+                                    <TextBlock Text="Telefonnummer :"
+                                               Style="{StaticResource DataGridTextCustomerData}" />
+                                    <TextBlock Text="E-Mail-Adresse :"
+                                               Style="{StaticResource DataGridTextCustomerData}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel IsEnabled="{Binding Path=DataContext.AreTextBoxesEnabled,
+                                                        Source={x:Reference page}}">
+                                    <TextBox Text="{Binding Path=DataContext.NewContactPerson,
+                                                    Source={x:Reference page}}"
+                                             Style="{StaticResource TextBoxCustomerData}"
+                                             Margin="30,30,15,30" />
+                                    <TextBox Text="{Binding Path=DataContext.NewCompanyName,
+                                                    Source={x:Reference page}}"
+                                             Style="{StaticResource TextBoxCustomerData}"
+                                             Margin="30,8,15,30" />
+                                    <TextBox Text="{Binding Path=DataContext.NewPhoneNumber,
+                                                    Source={x:Reference page}}"
+                                             Style="{StaticResource TextBoxCustomerData}"
+                                             Margin="30,8,15,30" />
+                                    <TextBox Text="{Binding Path=DataContext.NewEMailAddress,
+                                                    Source={x:Reference page}}"
+                                             Style="{StaticResource TextBoxCustomerData}"
+                                             Margin="30,8,15,30" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="Straße :"
+                                               Style="{StaticResource DataGridTextCustomerData}"
+                                               Margin="220,40,15,30" />
+                                    <TextBlock Text="Hausnummer :"
+                                               Style="{StaticResource DataGridTextCustomerData}" />
+                                    <TextBlock Text="Postleitzahl :"
+                                               Style="{StaticResource DataGridTextCustomerData}" />
+                                    <TextBlock Text="Stadt :"
+                                               Style="{StaticResource DataGridTextCustomerData}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel IsEnabled="{Binding Path=DataContext.AreTextBoxesEnabled,
+                                                        Source={x:Reference page}}">
+                                    <TextBox Text="{Binding Path=DataContext.NewStreet,
+                                                    Source={x:Reference page}}"
+                                             Style="{StaticResource TextBoxCustomerData}"
+                                             Margin="30,30,15,30" />
+                                    <TextBox Text="{Binding Path=DataContext.NewHouseNumber,
+                                                    Source={x:Reference page}}"
+                                             Style="{StaticResource TextBoxCustomerData}"
+                                             Margin="30,8,15,30" />
+                                    <TextBox Text="{Binding Path=DataContext.NewZipCode,
+                                                    Source={x:Reference page}}"
+                                             Style="{StaticResource TextBoxCustomerData}"
+                                             Margin="30,8,15,30" />
+                                    <TextBox Text="{Binding Path=DataContext.NewCity,
+                                                    Source={x:Reference page}}"
+                                             Style="{StaticResource TextBoxCustomerData}"
+                                             Margin="30,8,15,30" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            <!--Händlerdaten-->
+            <TextBlock Grid.Row="3"
+                       Style="{StaticResource HeadlinesUserInfo}"
+                       Text="Händlerdaten" />
+            <ScrollViewer VerticalScrollBarVisibility="Auto" />
+            <DataGrid Grid.Row="4"
+                      x:Name="DataGridDealerData"
+                      ItemsSource="{Binding Dealers}"
+                      Style="{StaticResource DefaultDataGrid}"
+                      Margin="60,0,190,0">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Firma"
+                                            HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                            CellStyle="{StaticResource DataGridTemplateDesign}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=CompanyName, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextNormal}"
+                                               FontSize="19"/>
+                                    <TextBlock Text="{Binding Path=ContactPersonText, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextSubtitle}" 
+                                               FontSize="15"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Straße"
+                                        MinWidth="100"
+                                        HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                        CellStyle="{StaticResource DataGridCellsDealer}"
+                                        Binding="{Binding Path=StreetText, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Stadt"
+                                        MinWidth="100"
+                                        HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                        CellStyle="{StaticResource DataGridCellsDealer}"
+                                        Binding="{Binding Path=CityText, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Land"
+                                        HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                        CellStyle="{StaticResource DataGridCellsDealer}"
+                                        Binding="{Binding Path=Country, Mode=OneWay}" />
+                    <DataGridTemplateColumn Header="Kontakt"
+                                            HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                            CellStyle="{StaticResource DataGridTemplateDesign}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=PhoneNumber, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextNormal}"
+                                               FontSize="19"
+                                               TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding Path=EMailAddress, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextSubtitle}"
+                                               FontSize="15"
+                                               TextAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Website"
+                                        Width="*"
+                                        HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                        CellStyle="{StaticResource DataGridCellsDealer}"
+                                        Binding="{Binding Path=Website, Mode=OneWay}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Style="{StaticResource NewOrderButtons}"
+                    Grid.Row="4"
+                    VerticalAlignment="Bottom"
+                    Click="GoBackButton"
+                    Margin="20,100,35,60">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Zurück"
+                           Style="{StaticResource NewOrderButtonsText}" />
+            </Button>
+        </Grid>
+    </ScrollViewer>
 </Page>

@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EMA.Views"
       mc:Ignorable="d"
+      x:Name="page"
       d:DesignHeight="640" d:DesignWidth="1120"
       Title="NewOrderOverviewView">
 
@@ -18,25 +19,172 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+            
+        <!--Bestelldaten-->
         <TextBlock Grid.Row="1"
                    Style="{StaticResource HeadlinesOverview}"
-                   Text="Bestelldaten:" />
+                   Text="Bestelldaten" />
         <DataGrid Grid.Row="2"
                   x:Name="DataGridOrderData"
-                  ItemsSource="{Binding }"
+                      ItemsSource="{Binding CustomerData}"
                   Style="{StaticResource DefaultDataGrid}"
-                  Margin="60,0,190,0">
-                
-        </DataGrid>   
+                  Margin="60,0,190,0"
+                  HeadersVisibility="None"
+                  GridLinesVisibility="None">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="Lieferadresse :"
+                                               Margin="40,30,0,10"
+                                               Style="{StaticResource DataGridOrderDataText}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="20,22,80,0">
+                                    <TextBlock Text="{Binding Path=CompanyName}"
+                                               Style="{StaticResource DataGridOrderDataText}"/>
+                                    <TextBlock Text="{Binding Path=ContactPerson}"
+                                               Style="{StaticResource DataGridOrderDataText}"/>
+                                    <TextBlock Text="{Binding Path=StreetText}"
+                                               Style="{StaticResource DataGridOrderDataText}"/>
+                                    <TextBlock Text="{Binding Path=CityText}"
+                                               Style="{StaticResource DataGridOrderDataText}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,80,0">
+                                    <TextBlock Text="Rechnungsadresse :"
+                                               Style="{StaticResource DataGridOrderDataText}"
+                                               Margin="10,30,0,0"/>
+                                    <CheckBox Content="Rechnung an Lieferadresse"
+                                              Style="{StaticResource CheckBoxBillVia}"
+                                              Margin="10,30,10,10"
+                                              IsChecked="{Binding Path=DataContext.BillViaAddress,
+                                                          Source={x:Reference page}, Mode=TwoWay}">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.5"
+                                                            ScaleY="1.5" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <CheckBox Content="Rechnung an E-Mail-Adresse"
+                                              Style="{StaticResource CheckBoxBillVia}"
+                                              Margin="10,20,10,10"
+                                              IsChecked="{Binding Path=DataContext.BillViaEMail,
+                                                          Source={x:Reference page}, Mode=TwoWay}">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.5"
+                                                            ScaleY="1.5" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,20,0,0">
+                                    <TextBlock Text="Zahlungsart"
+                                               Style="{StaticResource DataGridOrderDataText}"/>
+                                    <TextBlock Text="Kontoinhaber"
+                                               Style="{StaticResource DataGridOrderDataText}"/>
+                                    <TextBlock Text="IBAN"
+                                               Style="{StaticResource DataGridOrderDataText}"/>
+                                    <TextBlock Text="BIC"
+                                               Style="{StaticResource DataGridOrderDataText}"/>
+                                    
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,20,0,15">
+                                    <TextBlock Text=":    Lastschrift"
+                                               Style="{StaticResource DataGridOrderDataText}" />
+                                    <TextBlock Text=":    Salon Velly"
+                                               Style="{StaticResource DataGridOrderDataText}" />
+                                    <TextBlock Text=":    DE28 2343 0032 6200 7866 00"
+                                               Style="{StaticResource DataGridOrderDataText}" />
+                                    <TextBlock Text=":    SENNDE1FOT"
+                                               Style="{StaticResource DataGridOrderDataText}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellCustomerData}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="70,55,0,0">
+                                    <TextBlock Text="Bei Änderungen Ihrer"
+                                               Style="{StaticResource DataGridOrderDataSubtitle}" />
+                                    <TextBlock Text="Bankverbindung"
+                                               Style="{StaticResource DataGridOrderDataSubtitle}" />
+                                    <TextBlock Text="kontaktieren Sie bitte"
+                                               Style="{StaticResource DataGridOrderDataSubtitle}" />
+                                    <TextBlock Text="wie vereinbart den"
+                                               Style="{StaticResource DataGridOrderDataSubtitle}" />
+                                    <TextBlock Text="Kundensupport von"
+                                               Style="{StaticResource DataGridOrderDataSubtitle}" />
+                                    <TextBlock Text="Best Solutions."
+                                               Style="{StaticResource DataGridOrderDataSubtitle}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+        </DataGrid>
+        <Button Style="{StaticResource NewOrderButtons}"
+                Grid.Row="2"
+                Click="BackToNewOrderButton"
+                VerticalAlignment="Top"
+                Margin="20,20,35,20">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Button.Resources>
+                <TextBlock Text="Einkauf fortsetzen"
+                           Style="{StaticResource NewOrderButtonsText}" />
+            </Button>
+            <Button Style="{StaticResource NewOrderButtons}"
+                    Grid.Row="2"
+                    VerticalAlignment="Bottom"
+                    Click="DeleteOrderButton"
+                    Margin="20,100,35,20"
+                    Background="DarkRed">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Bestellung verwerfen"
+                           Style="{StaticResource NewOrderButtonsText}" />
+            </Button>
+
+            <!--Artikelinformationen-->
         <TextBlock Grid.Row="3"
                    Style="{StaticResource HeadlinesOverview}"
-                   Text="Artikelinformationen:" />
+                   Text="Artikelinformationen" />
         <ScrollViewer VerticalScrollBarVisibility="Auto" />
         <DataGrid Grid.Row="4"
                   x:Name="DataGridCart"
                   ItemsSource="{Binding ItemsForOrder}"
                   Style="{StaticResource DefaultDataGrid}"
-                  Margin="60,0,190,0">
+                  Margin="60,0,190,0"
+                  MaxHeight="720">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Bild"
                                         HeaderStyle="{StaticResource OrderTableHeader}"
@@ -129,42 +277,15 @@
         </DataGrid>
         <Button Style="{StaticResource NewOrderButtons}"
                 Grid.Row="4"
-                Click="BackToNewOrderButton"
-                VerticalAlignment="Top"
-                Margin="20,20,35,150">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10" />
-                </Style>
-            </Button.Resources>
-            <TextBlock Text="Einkauf fortsetzen"
-                       Style="{StaticResource NewOrderButtonsText}" />
-        </Button>
-        <Button Style="{StaticResource NewOrderButtons}"
-                Grid.Row="4"
-                VerticalAlignment="Center"
+                VerticalAlignment="Bottom"
                 Click="CompletePurchaseButton"
-                Margin="20,100,35,100">
+                Margin="20,0,35,180">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </Button.Resources>
             <TextBlock Text="Artikel kaufen"
-                       Style="{StaticResource NewOrderButtonsText}" />
-        </Button>
-        <Button Style="{StaticResource NewOrderButtons}"
-                Grid.Row="4"
-                VerticalAlignment="Bottom"
-                Click="DeleteOrderButton"
-                Margin="20,100,35,170"
-                Background="DarkRed">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10" />
-                </Style>
-            </Button.Resources>
-            <TextBlock Text="Bestellung verwerfen"
                        Style="{StaticResource NewOrderButtonsText}" />
         </Button>
         <TextBlock Style="{StaticResource TextSumNewOrder}"

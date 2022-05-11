@@ -9,11 +9,22 @@ namespace EMA.ViewModels
     {
         public NewOrderOverviewViewModel(string sumOrderItems, List<CartItem> orderItems)
         {
+            InitDemoData();
+
             ItemsForOrder = orderItems;
             SumItemsForOrder = sumOrderItems;
 
             CalculateTotalShipping();
             GetTotalPrice();
+        }
+
+        #region Properties
+
+        private List<CustomerData> _customerData;
+        public List<CustomerData> CustomerData
+        {
+            get { return _customerData; }
+            set { _customerData = value; }
         }
 
         private List<CartItem> _itemsForOrder = new List<CartItem>();
@@ -46,7 +57,6 @@ namespace EMA.ViewModels
         }
 
         private string _totalPrice;
-
         public string TotalPrice
         {
             get { return _totalPrice; }
@@ -57,8 +67,49 @@ namespace EMA.ViewModels
             }
         }
 
+        private bool _billViaAddress;
+        public bool BillViaAddress
+        {
+            get { return _billViaAddress; }
+            set 
+            { 
+                _billViaAddress = value;
+                OnPropertyChange();
+            }
+        }
 
-        public void DeleteEmptyOrderItem()
+        private bool _billViaEMail;
+        public bool BillViaEMail
+        {
+            get { return _billViaEMail; }
+            set
+            {
+                _billViaEMail = value;
+                OnPropertyChange();
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void InitDemoData()
+        {
+            CustomerData = new List<CustomerData>();
+            CustomerData.Add(new CustomerData
+            {
+                CompanyName = "Friseursalon Velly",
+                ContactPerson = "Max Mustermann",
+                Street = "Lingusterweg",
+                HouseNumber = "12",
+                ZipCode = 74852,
+                City = "Musterstadt-Veihingen",
+                PhoneNumber = "07445 7365409",
+                EMailAddress = "friseursalon-velly@info.de"
+            });
+        }
+
+            public void DeleteEmptyOrderItem()
         {
             ItemsForOrder = DeleteOfEmptyItems.DeleteEmptyItem(ItemsForOrder);
         }
@@ -106,5 +157,7 @@ namespace EMA.ViewModels
 
             TotalPrice = totalPrice;
         }
+        #endregion
+
     }
 }
