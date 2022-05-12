@@ -124,7 +124,7 @@ namespace EMA.ViewModels
                     PriceSelledUnitEUR = 5599,
                     Dealer = dealer,
                     DealerItemNumber = 12077556,
-                    Availability = "Auf Lager",
+                    Availability = "Nicht verfügbar",
                     DeliveryTime = "2-3  Werktage"
                 });
             }

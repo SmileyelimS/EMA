@@ -7,11 +7,11 @@
       mc:Ignorable="d"
       d:DesignHeight="640" d:DesignWidth="1120"
       Title="NewOrderView">
+    
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <!--HorizontalScrollBarVisibility="Auto">-->
         <Grid Background="Gray"
               MaxHeight="1040"
               MaxWidth="1900">
@@ -116,11 +116,10 @@
                                 <Button Background="Transparent"
                                         Click="AddToCartButton"
                                         Visibility="{Binding Path=IsAvailable,
-                                    Converter={StaticResource BoolToVis}}"
+                                                    Converter={StaticResource BoolToVis}}"
                                         ClickMode="Press"
                                         Cursor="Hand" >
-                                    <Image  x:Name="AddToCartButtonImage"
-                                            Style="{StaticResource AddToCartButtonImage}" />
+                                    <Image Style="{StaticResource AddToCartButtonImage}" />
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

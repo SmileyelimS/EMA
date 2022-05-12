@@ -16,6 +16,8 @@
     <None Remove="Resources\backgroundStartScreen.png" />
     <None Remove="Resources\Firmenlogo.png" />
     <None Remove="Resources\FirmenlogoIcon100.png" />
+    <None Remove="Resources\goToOldOrderViewDefault100.png" />
+    <None Remove="Resources\goToOldOrderViewHover100.png" />
     <None Remove="Resources\maximize.png" />
     <None Remove="Resources\ProgrammLogo100.png" />
     <None Remove="Resources\reduce.png" />
@@ -50,6 +52,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+    <Resource Include="Resources\goToOldOrderViewDefault100.png" />
+    <Resource Include="Resources\goToOldOrderViewHover100.png" />
     <Resource Include="Resources\ProgrammLogo100.png" />
     <Resource Include="Resources\reduce.png" />
   </ItemGroup>

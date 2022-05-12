@@ -5,15 +5,90 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EMA.Views"
       mc:Ignorable="d"
-      d:DesignHeight="640"
-      d:DesignWidth="1120"
+      d:DesignHeight="640" d:DesignWidth="1120"
       Title="OldOrdersOverviewView">
 
-    <Grid Background="Gray">
-        <TextBlock Text="Übersicht alte Bestellungen"
-                   Foreground="White"
-                   FontSize="80"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center" />
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="Gray"
+              MaxHeight="1040"
+              MaxWidth="1900">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" />
+            <DataGrid Grid.Row="1"
+                      ItemsSource="{Binding OldOrders}"
+                      Style="{StaticResource DefaultDataGrid}"
+                      Margin="50,50,230,0"
+                      MaxHeight="940">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Bestellt von"
+                                            HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                            CellStyle="{StaticResource DataGridTemplateDesign}"
+                                            MinWidth="250">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=CustomerData.CompanyName, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextNormal}"
+                                               FontSize="19"
+                                               TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding Path=CustomerData.ContactPerson, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextSubtitle}"
+                                               FontSize="15"
+                                               TextAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Bestellt am"
+                                        HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                        CellStyle="{StaticResource DataGridCellsDealer}"
+                                        Binding="{Binding Path=DateTimeText, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Gesamtpreis"
+                                        HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                        CellStyle="{StaticResource DataGridCellsDealer}"
+                                        Binding="{Binding Path=PriceText, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Rechnung an Lieferadresse"
+                                        MinWidth="100"
+                                        HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                        CellStyle="{StaticResource DataGridCellsDealer}"
+                                        Binding="{Binding Path=BillSendToAddressText, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Rechnung an E-Mail-Adresse"
+                                        MinWidth="100"
+                                        HeaderStyle="{StaticResource HeaderUserInfoDealer}"
+                                        CellStyle="{StaticResource DataGridCellsDealer}"
+                                        Binding="{Binding Path=BillSendToEMailText, Mode=OneWay}" />
+                    <DataGridTemplateColumn Width="*"
+                                            MinWidth="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Background="Transparent"
+                                        Click="GoToOldOrderView"
+                                        ClickMode="Press"
+                                        Cursor="Hand">
+                                    <Image Style="{StaticResource GoToOldOrderViewButtonImage}" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Style="{StaticResource OldOrderOverviewButton}"
+                    Click="BackToMainView">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Zurück zur Startseite"
+                           Style="{StaticResource NewOrderButtonsText}"
+                           FontSize="25"/>
+            </Button>
+        </Grid>
+    </ScrollViewer>
 </Page>

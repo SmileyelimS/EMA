@@ -1,4 +1,5 @@
-﻿using EMA.ViewModels;
+﻿using EMA.Models;
+using EMA.ViewModels;
 using System.Windows.Controls;
 
 namespace EMA.Views
@@ -13,6 +14,17 @@ namespace EMA.Views
             _viewModel = new OldOrdersOverviewViewModel();
             DataContext = _viewModel;
             MainWindowView.SetTitle("Übersicht alte Bestellungen");
+        }
+
+        private void GoToOldOrderView(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Orders clickedOrder = (Orders)((Button)e.Source).DataContext;
+            NavigationService.Navigate(new OldOrderView(clickedOrder));
+        }
+
+        private void BackToMainView(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainView());
         }
     }
 }

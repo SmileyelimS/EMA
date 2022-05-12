@@ -14,7 +14,7 @@ namespace EMA.Models
         public string SelledUnit { get; set; }
         public int PriceSelledUnitEUR { get; set; }
         public Dealer Dealer{ get; set; }
-        public int DealerItemNumber { get; set; }
+        public long DealerItemNumber { get; set; }
         public string Availability { get; set; }
         public string DeliveryTime { get; set; }
 

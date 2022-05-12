@@ -164,6 +164,32 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="Button"
+               x:Key="OldOrderOverviewButton">
+            <Setter Property="ClickMode" Value="Press" />
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Height" Value="80" />
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Margin" Value="0,80,20,60" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
         <!--DataGrid-->
         <Style TargetType="DataGrid"
@@ -353,7 +379,18 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+        <Style TargetType="Image"
+               x:Key="GoToOldOrderViewButtonImage">
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Source" Value="\Resources\goToOldOrderViewDefault100.png" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Source" Value="\Resources\goToOldOrderViewHover100.png" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <!--CheckBox-->
         <Style TargetType="CheckBox"
                x:Key="CheckBoxBillVia">
