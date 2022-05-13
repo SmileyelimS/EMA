@@ -1,0 +1,150 @@
+﻿<Page x:Class="EMA.Views.OldOrderView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EMA.Views"
+      mc:Ignorable="d"
+      d:DesignHeight="640" d:DesignWidth="1120"
+      Title="OldOrderView">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="Gray"
+              MaxHeight="1040"
+              MaxWidth="1900">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" />
+            <DataGrid Grid.Row="1"
+                      ItemsSource="{Binding OrderedItems}"
+                      Style="{StaticResource DefaultDataGrid}"
+                      Margin="50,50,230,0"
+                      MaxHeight="940">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Bild"
+                                            HeaderStyle="{StaticResource OrderTableHeader}">
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="ToolTip" Value="" />
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path=ItemFromOrder.PicturePath}" 
+                                       Height="50">
+                                    <Image.ToolTip>
+                                        <ToolTip>
+                                            <StackPanel>
+                                                <Image Source="{Binding Path=ItemFromOrder.PicturePath}"
+                                                       Height="600" />
+                                            </StackPanel>
+                                        </ToolTip>
+                                    </Image.ToolTip>
+                                </Image>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Produktname"
+                                            HeaderStyle="{StaticResource OrderTableHeader}"
+                                            CellStyle="{StaticResource DataGridTemplateDesign}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=ItemFromOrder.Name, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextNormal}"
+                                               FontSize="17"/>
+                                    <TextBlock Text="{Binding Path=ItemFromOrder.Description, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextSubtitle}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Händlerinformationen"
+                                            HeaderStyle="{StaticResource OrderTableHeader}"
+                                            CellStyle="{StaticResource DataGridTemplateDesign}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=ItemFromOrder.CompanyName, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextNormal}"
+                                               FontSize="17"/>
+                                    <TextBlock Text="{Binding Path=ItemFromOrder.ArticleNumber, Mode=OneWay}"
+                                               Style="{StaticResource DataGridTextSubtitle}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Inhalt je Packung"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        CellStyle="{StaticResource DataGridTextOrderOverview}"
+                                        Binding="{Binding Path=PackageVolume, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Anzahl je Einheit"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        CellStyle="{StaticResource DataGridTextOrderOverview}"
+                                        Binding="{Binding Path=SelledAmountString, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Preis je Einheit"
+                                        MinWidth="100"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        CellStyle="{StaticResource DataGridTextOrderOverview}"
+                                        Binding="{Binding Path=PriceUnitText, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Gekaufte Einheiten"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        CellStyle="{StaticResource DataGridTextOrderOverview}"
+                                        Binding="{Binding Path=SelledAmountItem, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Gesamtpreis"
+                                        MinWidth="120"
+                                        Width="*"
+                                        HeaderStyle="{StaticResource OrderTableHeader}"
+                                        CellStyle="{StaticResource DataGridTextOrderOverview}"
+                                        Binding="{Binding Path=SumOfItemText, Mode=OneWay}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Style="{StaticResource OldOrderOverviewButton}"
+                    Grid.Row="1"
+                    VerticalAlignment="Top"
+                    Click="BackToOverviewButton"
+                    Margin="20,70,28,0"
+                    Width="165">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Zurück zur Übersicht"
+                           Style="{StaticResource NewOrderButtonsText}"
+                           FontSize="24" />
+            </Button>
+            <Button Style="{StaticResource OldOrderOverviewButton}"
+                    Grid.Row="1"
+                    VerticalAlignment="Center"
+                    Click="GoToStartPageButton"
+                    Margin="20,180,28,100"
+                    Width="165">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Zurück zur Startseite"
+                           Style="{StaticResource NewOrderButtonsText}"
+                           FontSize="24"/>
+            </Button>
+            <TextBlock Style="{StaticResource TextSumNewOrder}"
+                       Grid.Row="1"
+                       Text="Summe:"
+                       FontSize="35"
+                       Margin="0,0,28,50" />
+            <TextBlock Style="{StaticResource TextSumNewOrder}"
+                       Grid.Row="1"
+                       Text="{Binding Path=OldOrder.PriceText}"
+                       FontSize="35"
+                       FontFamily="Arial Bold"
+                       Margin="35,15,35,10"/>
+        </Grid>
+    </ScrollViewer>
+</Page>
