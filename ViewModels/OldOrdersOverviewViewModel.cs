@@ -1,6 +1,8 @@
 ﻿using EMA.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EMA.ViewModels
 {
@@ -8,10 +10,16 @@ namespace EMA.ViewModels
     {
         public OldOrdersOverviewViewModel()
         {
-            InitDemoData();
+            InitOldOrders();
         }
 
-        public List<Orders> OldOrders { get; set; }
+        public List<Order> OldOrders { get; set; }
+
+        private void InitOldOrders()
+        {
+            var context = new EmaContext();
+            OldOrders = context.Orders.Include(x => x.CustomerData).ToList();
+        }
 
         private void InitDemoData()
         {
@@ -21,8 +29,8 @@ namespace EMA.ViewModels
                 ContactPerson = "Max Mustermann"
             };
 
-            OldOrders = new List<Orders>();
-            OldOrders.Add(new Orders()
+            OldOrders = new List<Order>();
+            OldOrders.Add(new Order()
             {
                 OrdersID = 1,
                 CustomerDataID = 1,
@@ -32,7 +40,7 @@ namespace EMA.ViewModels
                 BillViaEMail = true,
                 CustomerData = customer
             });
-            OldOrders.Add(new Orders()
+            OldOrders.Add(new Order()
             {
                 OrdersID = 2,
                 CustomerDataID = 1,
@@ -42,7 +50,7 @@ namespace EMA.ViewModels
                 BillViaEMail = true,
                 CustomerData= customer
             });
-            OldOrders.Add(new Orders()
+            OldOrders.Add(new Order()
             {
                 OrdersID = 3,
                 CustomerDataID = 1,

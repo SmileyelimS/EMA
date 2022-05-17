@@ -29,12 +29,16 @@ namespace EMA.Views
         {
             if(_viewModel.BillViaAddress || _viewModel.BillViaEMail)
             {
-                //Todo: In Datenbank speichern
-                return;
+                _viewModel.CompletePurchase();
+                MessageBox.Show("Ihre Bestellung wurde übermittelt. Sie werden zurück zur Startseite navigiert.", 
+                                "Bestellung wurde übermittelt", MessageBoxButton.OK);
+                NavigationService.Navigate(new MainView());
             }
-
-            MessageBox.Show("Sie müssen mindestens eine Option für die Rechnungsadresse auswählen.",
+            else
+            {
+                MessageBox.Show("Sie müssen mindestens eine Option für die Rechnungsadresse auswählen.",
                 "Bestellung abschließen nicht möglich!", MessageBoxButton.OK);
+            }
         }
 
         private void DeleteOrderButton(object sender, RoutedEventArgs e)

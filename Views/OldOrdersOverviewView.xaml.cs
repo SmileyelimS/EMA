@@ -18,7 +18,7 @@ namespace EMA.Views
 
         private void GoToOldOrderView(object sender, System.Windows.RoutedEventArgs e)
         {
-            Orders clickedOrder = (Orders)((Button)e.Source).DataContext;
+            Order clickedOrder = (Order)((Button)e.Source).DataContext;
             NavigationService.Navigate(new OldOrderView(clickedOrder));
         }
 

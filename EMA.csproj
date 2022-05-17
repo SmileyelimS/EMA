@@ -52,6 +52,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.1" />
     <Resource Include="Resources\goToOldOrderViewDefault100.png" />
     <Resource Include="Resources\goToOldOrderViewHover100.png" />
     <Resource Include="Resources\ProgrammLogo100.png" />

@@ -60,7 +60,7 @@ namespace EMA.Views
 
         private void AddToCartButton(object sender, RoutedEventArgs e)
         {
-            Items clickedItem = (Items)((Button)e.Source).DataContext;
+            Item clickedItem = (Item)((Button)e.Source).DataContext;
             _viewModel.AddToCart(clickedItem);
 
             GoToOverview.IsEnabled = true;

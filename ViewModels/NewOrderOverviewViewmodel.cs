@@ -9,7 +9,7 @@ namespace EMA.ViewModels
     {
         public NewOrderOverviewViewModel(string sumOrderItems, List<CartItem> orderItems)
         {
-            InitDemoData();
+            InitCustomerData();
 
             ItemsForOrder = orderItems;
             SumItemsForOrder = sumOrderItems;
@@ -56,6 +56,8 @@ namespace EMA.ViewModels
             }
         }
 
+        public int SumShippingInt { get; set; }
+
         private string _totalPrice;
         public string TotalPrice
         {
@@ -89,9 +91,20 @@ namespace EMA.ViewModels
             }
         }
 
+        public int TotalPriceInt { get; set; }
+
+        public Order NewOrder { get; set; }
+        public List<OrderedItem> OrderedItems { get; set; } = new List<OrderedItem>();
+
         #endregion
 
         #region Methods
+
+        private void InitCustomerData()
+        {
+            var context = new EmaContext();
+            CustomerData = context.CustomerDatas.ToList();
+        }
 
         private void InitDemoData()
         {
@@ -102,7 +115,7 @@ namespace EMA.ViewModels
                 ContactPerson = "Max Mustermann",
                 Street = "Lingusterweg",
                 HouseNumber = "12",
-                ZipCode = 74852,
+                ZipCode = "74852",
                 City = "Musterstadt-Veihingen",
                 PhoneNumber = "07445 7365409",
                 EMailAddress = "friseursalon-velly@info.de"
@@ -133,6 +146,7 @@ namespace EMA.ViewModels
                 }
             }
 
+            SumShippingInt = (int)(deliveryCost * 100);
             SumShipping = deliveryCost.ToString("0.00 €");
         }
 
@@ -151,12 +165,62 @@ namespace EMA.ViewModels
             string[] splitSumShipping = SumShipping.Split(" ");
             var onlyNumbersFromSumShipping = splitSumShipping[0];
 
-            double totalPriceDouble = Convert.ToDouble(onlyNumbersFromSumItemsForOrder) + Convert.ToDouble(onlyNumbersFromSumShipping); 
+            double totalPriceDouble = Convert.ToDouble(onlyNumbersFromSumItemsForOrder) + Convert.ToDouble(onlyNumbersFromSumShipping);
+            TotalPriceInt = (int)(totalPriceDouble*100);
 
             var totalPrice = totalPriceDouble.ToString("0.00 €");
 
             TotalPrice = totalPrice;
         }
+
+        public void SetNewOrder()
+        {
+            NewOrder = new Order()
+            {
+                CustomerDataID = CustomerData.First().CustomerDataID,
+                OrderDate = DateTime.Now,
+                TotalPriceEUR = TotalPriceInt,
+                BillViaAddress = BillViaAddress,
+                BillViaEMail = BillViaEMail,
+                Shipping = SumShippingInt 
+            };
+        }
+
+        private void SetOrderedItems()
+        {
+            var itemsInCart = new List<Item>();
+            foreach(CartItem cartItem in ItemsForOrder)
+            {
+                itemsInCart.Add(cartItem.Item);
+            }
+
+            foreach(Item i in itemsInCart)
+            {
+                OrderedItems.Add(new OrderedItem()
+                { 
+                    Items = i,
+                    Orders = NewOrder,
+                    VolumePack = i.VolumePack,
+                    VolumeUnitPack = i.VolumeUnitPack,
+                    SelledAmount = i.SelledAmount,
+                    SelledUnit = i.SelledUnit,
+                    PriceUnitEUR = i.PriceSelledUnitEUR,
+                    SelledAmountItem = ItemsForOrder.First(x => x.Item.ItemID == i.ItemID).Count,
+                });
+            }
+        }
+
+        public void CompletePurchase()
+        {
+            SetNewOrder();
+            SetOrderedItems();
+            var contextOrders = new EmaContext();
+            contextOrders.Add(NewOrder);
+            contextOrders.AttachRange(OrderedItems);
+
+            contextOrders.SaveChanges();
+        }
+
         #endregion
 
     }

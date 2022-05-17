@@ -10,6 +10,9 @@
       x:Name="page"
       Title="UserInformationsView">
 
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Page.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid Background="Gray">
             <Grid.RowDefinitions>
@@ -111,6 +114,13 @@
                                                     Source={x:Reference page}}"
                                              Style="{StaticResource TextBoxCustomerData}"
                                              Margin="30,8,15,30" />
+                                    <TextBlock Text="Die eingegebene E-Mail-Adresse ist nicht korrekt!"
+                                               FontFamily="Arial"
+                                               FontSize="15"
+                                               Foreground="Red"
+                                               Margin="38,-20,15,10"
+                                               Visibility="{Binding Path=DataContext.IsMailInvalid, Source={x:Reference page},
+                                                            Converter={StaticResource BoolToVis}}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

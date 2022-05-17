@@ -2,7 +2,7 @@
 
 namespace EMA.Models
 {
-    public class Items
+    public class Item
     {
         public int ItemID { get; set; }
         public string Picture { get; set; }
@@ -20,7 +20,7 @@ namespace EMA.Models
 
         public bool IsAvailable => "Auf Lager".Equals(Availability);
 
-        public string PicturePath => $@"C:\Users\nsiebrands\Documents\Projekt Schule\Bilder\Datenbank bsp\{Picture}";
+        public string PicturePath => $@"C:\Users\nsiebrands\Documents\Projekt Schule\Bilder\Bilder Datenbank\{Picture}";
         public string PackageVolume => $"{VolumePack}" + " " + $"{VolumeUnitPack}";
         public string SelledAmountString => $"{SelledAmount}" + " " + $"{SelledUnit}";
         public string ArticleNumber => $"Art.Nr.:" + " " + $"{DealerItemNumber}";

@@ -2,7 +2,7 @@
 
 namespace EMA.Models
 {
-    public class Orders
+    public class Order
     {
         public int OrdersID { get; set; }
         public int CustomerDataID { get; set; }
@@ -10,6 +10,7 @@ namespace EMA.Models
         public int TotalPriceEUR { get; set; }
         public bool BillViaAddress { get; set; }
         public bool BillViaEMail { get; set; }
+        public int Shipping { get; set; }
         public CustomerData CustomerData { get; set; }
 
         public double Price => TotalPriceEUR / 100d;
@@ -17,5 +18,7 @@ namespace EMA.Models
         public string DateTimeText => $"{OrderDate:dd.MM.yyyy}";
         public string BillSendToAddressText => BillViaAddress ? "Ja" : "Nein";
         public string BillSendToEMailText => BillViaEMail ? "Ja" : "Nein";
+        public double PriceShipping => Shipping / 100d;
+        public string PriceShippingText => $"{PriceShipping:0.00}" + " " + $"€";
     }
 }

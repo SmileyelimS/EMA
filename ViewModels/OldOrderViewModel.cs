@@ -1,4 +1,5 @@
 ﻿using EMA.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,25 @@ namespace EMA.ViewModels
 {
     public class OldOrderViewModel
     {
-        public OldOrderViewModel(Orders oldOrder)
+        public OldOrderViewModel(Order oldOrder)
         {
             OldOrder = oldOrder;
 
-            InitDemoData();
+            InitOrderedItems();
         }
 
-        public Orders OldOrder { get; set; }
-        public List<OrderedItems> OrderedItems { get; set; }
+        public Order OldOrder { get; set; }
+        public List<OrderedItem> OrderedItems { get; set; }
+
+        private void InitOrderedItems()
+        {
+            var context = new EmaContext();
+            OrderedItems = context.OrderedItems
+                .Include(x => x.Items)
+                .ThenInclude(x => x.Dealer)
+                .Where(x => x.OrdersID == OldOrder.OrdersID)
+                .ToList();
+        }
 
         public void InitDemoData()
         {
@@ -38,10 +49,10 @@ namespace EMA.ViewModels
                 DealerID = 2
             };
 
-            var items = new List<Items>();
+            var items = new List<Item>();
             for (int i = 0; i < 8; i++)
             {
-                items.Add(new Items
+                items.Add(new Item
                 {
                     ItemID = 1,
                     Picture = "Haarfarbe.png",
@@ -50,7 +61,7 @@ namespace EMA.ViewModels
                     Dealer = dealer2,
                     DealerItemNumber = 12077448,
                 });
-                items.Add(new Items
+                items.Add(new Item
                 {
                     ItemID = 2,
                     Picture = "Shampoo.png",
@@ -59,7 +70,7 @@ namespace EMA.ViewModels
                     Dealer = dealer,
                     DealerItemNumber = 12077666,
                 });
-                items.Add(new Items
+                items.Add(new Item
                 {
                     ItemID = 3,
                     Picture = "Spülung.png",
@@ -70,11 +81,11 @@ namespace EMA.ViewModels
                 });
             }
 
-            OrderedItems = new List<OrderedItems>();
-            OrderedItems.Add(new OrderedItems
+            OrderedItems = new List<OrderedItem>();
+            OrderedItems.Add(new OrderedItem
             {
                 OrdersID = 1,
-                ItemFromOrder = items.First(),
+                Items = items.First(),
                 VolumePack = 100,
                 VolumeUnitPack = "ml",
                 SelledAmount = 12,
@@ -82,10 +93,10 @@ namespace EMA.ViewModels
                 PriceUnitEUR = 4999,
                 SelledAmountItem = 3
             });
-            OrderedItems.Add(new OrderedItems
+            OrderedItems.Add(new OrderedItem
             {
                 OrdersID = 2,
-                ItemFromOrder = items.Last(),
+                Items = items.Last(),
                 VolumePack = 250,
                 VolumeUnitPack = "ml",
                 SelledAmount = 10,
@@ -93,10 +104,10 @@ namespace EMA.ViewModels
                 PriceUnitEUR = 5599,
                 SelledAmountItem = 5
             });
-            OrderedItems.Add(new OrderedItems
+            OrderedItems.Add(new OrderedItem
             {
                 OrdersID = 3,
-                ItemFromOrder = items[1],
+                Items = items[1],
                 VolumePack = 1000,
                 VolumeUnitPack = "ml",
                 SelledAmount = 6,

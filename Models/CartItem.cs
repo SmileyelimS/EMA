@@ -2,7 +2,7 @@
 {
     public class CartItem
     {
-        public Items Item { get; set; }
+        public Item Item { get; set; }
         public string FreeDeliveryFrom
         {
             get { return FreeDeliveryFromText(); }
@@ -14,7 +14,7 @@
             set; 
         }
 
-        public CartItem(Items item)
+        public CartItem(Item item)
         {
             Item = item;
             Count = 1;

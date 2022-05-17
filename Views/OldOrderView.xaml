@@ -35,12 +35,12 @@
                         </DataGridTemplateColumn.CellStyle>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding Path=ItemFromOrder.PicturePath}" 
+                                <Image Source="{Binding Path=Items.PicturePath}" 
                                        Height="50">
                                     <Image.ToolTip>
                                         <ToolTip>
                                             <StackPanel>
-                                                <Image Source="{Binding Path=ItemFromOrder.PicturePath}"
+                                                <Image Source="{Binding Path=Items.PicturePath}"
                                                        Height="600" />
                                             </StackPanel>
                                         </ToolTip>
@@ -55,10 +55,10 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Path=ItemFromOrder.Name, Mode=OneWay}"
+                                    <TextBlock Text="{Binding Path=Items.Name, Mode=OneWay}"
                                                Style="{StaticResource DataGridTextNormal}"
                                                FontSize="17"/>
-                                    <TextBlock Text="{Binding Path=ItemFromOrder.Description, Mode=OneWay}"
+                                    <TextBlock Text="{Binding Path=Items.Description, Mode=OneWay}"
                                                Style="{StaticResource DataGridTextSubtitle}"/>
                                 </StackPanel>
                             </DataTemplate>
@@ -70,10 +70,10 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Path=ItemFromOrder.CompanyName, Mode=OneWay}"
+                                    <TextBlock Text="{Binding Path=Items.CompanyName, Mode=OneWay}"
                                                Style="{StaticResource DataGridTextNormal}"
                                                FontSize="17"/>
-                                    <TextBlock Text="{Binding Path=ItemFromOrder.ArticleNumber, Mode=OneWay}"
+                                    <TextBlock Text="{Binding Path=Items.ArticleNumber, Mode=OneWay}"
                                                Style="{StaticResource DataGridTextSubtitle}"/>
                                 </StackPanel>
                             </DataTemplate>
@@ -98,7 +98,6 @@
                                         Binding="{Binding Path=SelledAmountItem, Mode=OneWay}" />
                     <DataGridTextColumn Header="Gesamtpreis"
                                         MinWidth="120"
-                                        Width="*"
                                         HeaderStyle="{StaticResource OrderTableHeader}"
                                         CellStyle="{StaticResource DataGridTextOrderOverview}"
                                         Binding="{Binding Path=SumOfItemText, Mode=OneWay}" />
@@ -123,7 +122,7 @@
                     Grid.Row="1"
                     VerticalAlignment="Center"
                     Click="GoToStartPageButton"
-                    Margin="20,180,28,100"
+                    Margin="20,180,28,180"
                     Width="165">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -136,6 +135,18 @@
             </Button>
             <TextBlock Style="{StaticResource TextSumNewOrder}"
                        Grid.Row="1"
+                       Text="Versand:"
+                       FontSize="30"
+                       Margin="0,0,22,130" />
+            <TextBlock Style="{StaticResource TextSumNewOrder}"
+                       Grid.Row="1"
+                       Text="{Binding Path=OldOrder.PriceShippingText}"
+                       FontSize="30"
+                       FontFamily="Arial Bold"
+                       Margin="35,15,35,90"
+                       TextAlignment="Center" />
+            <TextBlock Style="{StaticResource TextSumNewOrder}"
+                       Grid.Row="1"
                        Text="Summe:"
                        FontSize="35"
                        Margin="0,0,28,50" />
@@ -144,7 +155,8 @@
                        Text="{Binding Path=OldOrder.PriceText}"
                        FontSize="35"
                        FontFamily="Arial Bold"
-                       Margin="35,15,35,10"/>
+                       Margin="35,15,35,10"
+                       TextAlignment="Center"/>
         </Grid>
     </ScrollViewer>
 </Page>

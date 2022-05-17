@@ -23,7 +23,7 @@ namespace EMA.Views
     public partial class OldOrderView : Page
     {
         private readonly OldOrderViewModel _viewModel;
-        public OldOrderView(Orders oldOrder)
+        public OldOrderView(Order oldOrder)
         {
             InitializeComponent();
 

@@ -2,11 +2,12 @@
 
 namespace EMA.Models
 {
-    public class OrderedItems
+    public class OrderedItem
     {
         public int OrdersID { get; set; }
+        public Order Orders { get; set; }
         public int ItemsID { get; set; }
-        public Items ItemFromOrder { get; set; }
+        public Item Items { get; set; }
         public int VolumePack { get; set; }
         public string VolumeUnitPack { get; set; }
         public int SelledAmount { get; set; }

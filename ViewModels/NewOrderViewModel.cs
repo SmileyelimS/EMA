@@ -1,5 +1,7 @@
 ﻿using EMA.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace EMA.ViewModels
@@ -10,13 +12,13 @@ namespace EMA.ViewModels
         {
             ItemsInCart = cartItems;
             SumCart = sum;
-            InitDemoItems();
+            InitItems();
         }
 
         #region Properties
 
-        private List<Items> _items;
-        public List<Items> Items
+        private List<Item> _items;
+        public List<Item> Items
         {
             get { return _items; }
             set { _items = value; }
@@ -57,6 +59,12 @@ namespace EMA.ViewModels
 
         #region Methods
 
+        private void InitItems()
+        {
+            var context = new EmaContext();
+            Items = context.Items.Include(x => x.Dealer).ToList();
+        }
+
         private void InitDemoItems()
         {
             var dealer = new Dealer
@@ -75,11 +83,11 @@ namespace EMA.ViewModels
                 StandardDeliveryDeEUR = 399,
                 DealerID = 2
             };
-            Items = new List<Items>();
+            Items = new List<Item>();
 
             for (int i = 0; i < 8; i++)
             {
-                Items.Add(new Items
+                Items.Add(new Item
                 {
                     ItemID = 1,
                     Picture = "Haarfarbe.png",
@@ -95,7 +103,7 @@ namespace EMA.ViewModels
                     Availability = "Auf Lager",
                     DeliveryTime = "1-2  Werktage"
                 });
-                Items.Add(new Items
+                Items.Add(new Item
                 {
                     ItemID = 2,
                     Picture = "Shampoo.png",
@@ -111,7 +119,7 @@ namespace EMA.ViewModels
                     Availability = "Auf Lager",
                     DeliveryTime = "1-2  Werktage"
                 });
-                Items.Add(new Items
+                Items.Add(new Item
                 {
                     ItemID = 3,
                     Picture = "Spülung.png",
@@ -130,7 +138,7 @@ namespace EMA.ViewModels
             }
         }
 
-        public List<Items> MyFilteredItems
+        public List<Item> MyFilteredItems
         {
             get
             {
@@ -145,7 +153,7 @@ namespace EMA.ViewModels
             }
         }
 
-        public void AddToCart(Items item)
+        public void AddToCart(Item item)
         {
             var itemInList = ItemsInCart.FirstOrDefault(x => x.Item == item);
 

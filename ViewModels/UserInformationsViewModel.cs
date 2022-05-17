@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace EMA.ViewModels
 {
@@ -9,7 +10,7 @@ namespace EMA.ViewModels
     {
         public UserInformationsViewModel(string sum, List<CartItem> cartItems)
         {
-            InitDemoData();
+            InitData();
 
             SumCartFromOtherView = sum;
             CartItemsFromOtherView = cartItems;
@@ -60,6 +61,7 @@ namespace EMA.ViewModels
             set
             {
                 _newEMailAddress = value;
+                CheckIfMailIsValid();
                 OnPropertyChange();
             }
         }
@@ -86,8 +88,8 @@ namespace EMA.ViewModels
             }
         }
 
-        private int _newZipCode;
-        public int NewZipCode
+        private string _newZipCode;
+        public string NewZipCode
         {
             get { return _newZipCode; }
             set
@@ -134,9 +136,33 @@ namespace EMA.ViewModels
             set { dealers = value; }
         }
 
+        private bool _isMailValid;
+
+        public bool IsMailInvalid
+        {
+            get { return _isMailValid; }
+            set 
+            { 
+                _isMailValid = value;
+                OnPropertyChange();
+            }
+        }
+
         #endregion
 
         #region Methods
+
+        private void InitData()
+        {
+            var contextCustomer = new EmaContext();
+            CustomerData = contextCustomer.CustomerDatas.ToList();
+
+            SetDefaultCustomerData();
+
+            var contextDealer = new EmaContext();
+            Dealers = contextDealer.Dealers.ToList();
+
+        }
 
         private void InitDemoData()
         {
@@ -147,7 +173,7 @@ namespace EMA.ViewModels
                 ContactPerson = "Max Mustermann",
                 Street = "Lingusterweg",
                 HouseNumber = "12",
-                ZipCode = 74852,
+                ZipCode = "74852",
                 City = "Musterstadt-Veihingen",
                 PhoneNumber = "07445 7365409",
                 EMailAddress = "friseursalon-velly@info.de"
@@ -163,7 +189,7 @@ namespace EMA.ViewModels
                 ContactPerson = "Schwarz Kopf",
                 Street = "Hasenweide",
                 HouseNumber = "2",
-                ZipCode = 77893,
+                ZipCode = "77893",
                 City = "Schwarzköpfingen",
                 Country = "Deutschland",
                 PhoneNumber = "09344 8734190",
@@ -178,7 +204,7 @@ namespace EMA.ViewModels
                 ContactPerson = "Anneliese Hägele",
                 Street = "Wiesenweg",
                 HouseNumber = "22",
-                ZipCode = 77113,
+                ZipCode = "77113",
                 City = "Hagel",
                 Country = "Deutschland",
                 PhoneNumber = "01144 776339",
@@ -193,7 +219,7 @@ namespace EMA.ViewModels
                 ContactPerson = "Roland V. Mayer",
                 Street = "Kleisterstraße",
                 HouseNumber = "14",
-                ZipCode = 70922,
+                ZipCode = "70922",
                 City = "Handau",
                 Country = "Deutschland",
                 PhoneNumber = "08966 6598431",
@@ -223,20 +249,29 @@ namespace EMA.ViewModels
 
         public void SetNewCustomerData()
         {
-            var newCustomerData = new List<CustomerData>();
-            newCustomerData.Add(new CustomerData
+            var id = CustomerData.First().CustomerDataID;
+            var country = CustomerData.First().Country;
+            CustomerData = new List<CustomerData>()
             {
-                ContactPerson = NewContactPerson,
-                CompanyName = NewCompanyName,
-                PhoneNumber = NewPhoneNumber,
-                EMailAddress = NewEMailAddress,
-                Street = NewStreet,
-                HouseNumber = NewHouseNumber,
-                ZipCode = NewZipCode,
-                City = NewCity,
-            });
+                new CustomerData
+                {
+                    ContactPerson = NewContactPerson,
+                    CompanyName = NewCompanyName,
+                    PhoneNumber = NewPhoneNumber,
+                    EMailAddress = NewEMailAddress,
+                    Street = NewStreet,
+                    HouseNumber = NewHouseNumber,
+                    ZipCode = NewZipCode,
+                    City = NewCity,
+                    Country = country,
+                    CustomerDataID = id
+                }
+            };
 
-            CustomerData = newCustomerData;
+            var contextCustomer = new EmaContext();
+            contextCustomer.Update(CustomerData.First());
+
+            contextCustomer.SaveChanges();
         }
 
         public void EnableTextBoxes()
@@ -247,6 +282,16 @@ namespace EMA.ViewModels
         public void DisableTextBoxes()
         {
             AreTextBoxesEnabled = false;
+        }
+
+        public void CheckIfMailIsValid()
+        {
+            Regex validateMail = new Regex
+                (
+                "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                );
+
+            IsMailInvalid = !validateMail.IsMatch(NewEMailAddress);
         }
 
         #endregion

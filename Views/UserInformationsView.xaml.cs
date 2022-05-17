@@ -42,12 +42,15 @@ namespace EMA.Views
 
         private void SaveChangesButton(object sender, RoutedEventArgs e)
         {
-            _viewModel.SetNewCustomerData();
-            EditUserInfo.IsEnabled = true;
-            _viewModel.DisableTextBoxes();
-            SaveChanges.Visibility = Visibility.Collapsed;
-            Cancel.Visibility = Visibility.Collapsed;
-            //Todo: In Datenbank speichern
+            _viewModel.CheckIfMailIsValid();
+            if (!_viewModel.IsMailInvalid)
+            {
+                _viewModel.SetNewCustomerData();
+                EditUserInfo.IsEnabled = true;
+                _viewModel.DisableTextBoxes();
+                SaveChanges.Visibility = Visibility.Collapsed;
+                Cancel.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void CancelButton(object sender, RoutedEventArgs e)

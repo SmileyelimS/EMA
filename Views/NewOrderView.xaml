@@ -34,7 +34,8 @@
             <DataGrid Grid.Row="2"
                       x:Name="Items"
                       ItemsSource="{Binding MyFilteredItems}"
-                      Style="{StaticResource DefaultDataGrid}" >
+                      Style="{StaticResource DefaultDataGrid}"
+                      MinHeight="450">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Bild"
                                             HeaderStyle="{StaticResource OrderTableHeader}">
@@ -46,12 +47,14 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=PicturePath}"
-                                       Height="50">
+                                       Height="50"
+                                       Width="50">
                                     <Image.ToolTip>
                                         <ToolTip>
                                             <StackPanel>
                                                 <Image Source="{Binding Path=PicturePath}"
-                                                       Height="600" />
+                                                       Height="600"
+                                                       MaxWidth="800"/>
                                             </StackPanel>
                                         </ToolTip>
                                     </Image.ToolTip>
