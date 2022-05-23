@@ -20,7 +20,7 @@ namespace EMA.Models
 
         public bool IsAvailable => "Auf Lager".Equals(Availability);
 
-        public string PicturePath => $@"C:\Users\nsiebrands\Documents\Projekt Schule\Bilder\Bilder Datenbank\{Picture}";
+        public string PicturePath => $@"\images database\{Picture}";
         public string PackageVolume => $"{VolumePack}" + " " + $"{VolumeUnitPack}";
         public string SelledAmountString => $"{SelledAmount}" + " " + $"{SelledUnit}";
         public string ArticleNumber => $"Art.Nr.:" + " " + $"{DealerItemNumber}";
