@@ -189,6 +189,8 @@ namespace EMA.ViewModels
         private void SetOrderedItems()
         {
             var itemsInCart = new List<Item>();
+            ItemsForOrder = DeleteOfEmptyItems.DeleteEmptyItem(ItemsForOrder);
+
             foreach(CartItem cartItem in ItemsForOrder)
             {
                 itemsInCart.Add(cartItem.Item);
