@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -10,6 +10,43 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images database\BaByliss-power-pro-2000w.png" />
+    <None Remove="images database\color_mixer.png" />
+    <None Remove="images database\comair-cape-hair.png" />
+    <None Remove="images database\comair-vinyl-gloves.png" />
+    <None Remove="images database\friseurbesen.png" />
+    <None Remove="images database\friseurhaarsauger.png" />
+    <None Remove="images database\friseurwagen.png" />
+    <None Remove="images database\haarfarbe_schwarz.png" />
+    <None Remove="images database\hair_clips_pack_of_12.png" />
+    <None Remove="images database\hair_dryer.png" />
+    <None Remove="images database\hair_mask.png" />
+    <None Remove="images database\hair_trimmer.png" />
+    <None Remove="images database\hair_trimmer_remington.png" />
+    <None Remove="images database\handtücher_grün.png" />
+    <None Remove="images database\handtücher_schwarz.png" />
+    <None Remove="images database\handtücher_weiß_grau.png" />
+    <None Remove="images database\kérastase_sirum.png" />
+    <None Remove="images database\lockenwickler.png" />
+    <None Remove="images database\loréal_paris_préférence.png" />
+    <None Remove="images database\loréal_paris_préférence_blond.png" />
+    <None Remove="images database\luminance_ultraviolett.png" />
+    <None Remove="images database\mixing_bowl.png" />
+    <None Remove="images database\pinsel_kamm.png" />
+    <None Remove="images database\pinsel_set5.png" />
+    <None Remove="images database\remington-glaetteisen.png" />
+    <None Remove="images database\revital_shampoo.png" />
+    <None Remove="images database\schwarzkopf-repair-rescue-serum.png" />
+    <None Remove="images database\schwarzkopf_blondierung.png" />
+    <None Remove="images database\schwarzkopf_red_hair_colour.png" />
+    <None Remove="images database\seifenspender.png" />
+    <None Remove="images database\set5_kamm.png" />
+    <None Remove="images database\set_scheren.png" />
+    <None Remove="images database\silver_shampoo.png" />
+    <None Remove="images database\spülung_fruchtvitamin.png" />
+    <None Remove="images database\stuhl.png" />
+    <None Remove="images database\styling-brush-round.png" />
+    <None Remove="images database\thining_scissors.png" />
     <None Remove="katzenbaby-quiz.jpg" />
     <None Remove="Resources\addTocCartClick100.png" />
     <None Remove="Resources\addTocCartDefault100.png" />
@@ -42,6 +79,117 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images database\BaByliss-power-pro-2000w.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\color_mixer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\comair-cape-hair.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\comair-vinyl-gloves.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\friseurbesen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\friseurhaarsauger.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\friseurwagen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\haarfarbe_schwarz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\hair_clips_pack_of_12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\hair_dryer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\hair_mask.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\hair_trimmer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\hair_trimmer_remington.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\handtücher_grün.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\handtücher_schwarz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\handtücher_weiß_grau.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\kérastase_sirum.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\lockenwickler.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\loréal_paris_préférence.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\loréal_paris_préférence_blond.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\luminance_ultraviolett.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\mixing_bowl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\pinsel_kamm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\pinsel_set5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\remington-glaetteisen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\revital_shampoo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\schwarzkopf-repair-rescue-serum.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\schwarzkopf_blondierung.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\schwarzkopf_red_hair_colour.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\seifenspender.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\set5_kamm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\set_scheren.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\silver_shampoo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\spülung_fruchtvitamin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\stuhl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\styling-brush-round.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images database\thining_scissors.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\addTocCartClick100.png" />
     <Resource Include="Resources\addTocCartDefault100.png" />
     <Resource Include="Resources\FirmenlogoIcon100.png" />
@@ -61,120 +209,6 @@
 
   <ItemGroup>
     <SplashScreen Include="Resources\Firmenlogo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="images database\BaByliss-power-pro-2000w.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\color_mixer.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\comair-cape-hair.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\comair-vinyl-gloves.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\friseurbesen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\friseurhaarsauger.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\friseurwagen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\haarfarbe_schwarz.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\hair_clips_pack_of_12.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\hair_dryer.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\hair_mask.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\hair_trimmer.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\hair_trimmer_remington.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\handtücher_grün.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\handtücher_schwarz.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\handtücher_weiß_grau.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\kérastase_sirum.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\lockenwickler.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\loréal_paris_préférence.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\loréal_paris_préférence_blond.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\luminance_ultraviolett.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\mixing_bowl.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\pinsel_kamm.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\pinsel_set5.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\remington-glaetteisen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\revital_shampoo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\schwarzkopf-repair-rescue-serum.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\schwarzkopf_blondierung.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\schwarzkopf_red_hair_colour.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\seifenspender.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\set5_kamm.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\set_scheren.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\silver_shampoo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\spülung_fruchtvitamin.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\stuhl.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\styling-brush-round.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images database\thining_scissors.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
